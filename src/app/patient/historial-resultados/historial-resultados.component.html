@@ -1,0 +1,71 @@
+<app-navbar></app-navbar>
+
+<div class="p-6 space-y-6">
+  <div class="space-y-2">
+    <h1 class="text-3xl font-bold tracking-tight">Mis Resultados</h1>
+    <p class="text-gray-500">
+      En esta sección encontrará todos los resultados de sus estudios clínicos ordenados por fecha.
+      Puede descargar cada archivo haciendo clic en el icono correspondiente.
+    </p>
+  </div>
+
+  <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+    <div class="relative flex-1">
+      <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (input)="handleSearch()"
+        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-[#aaf9c3]"
+        placeholder="Buscar por nombre, tipo o doctor..."
+      />
+    </div>
+    <button class="bg-[#aaf9c3] hover:bg-[#8fe0a9] text-black px-4 py-2 rounded-md transition">
+      Filtrar por fecha
+    </button>
+  </div>
+
+  <div class="space-y-4 mt-6">
+    <ng-container *ngIf="filteredResultados.length > 0; else sinResultados">
+      <div *ngFor="let resultado of filteredResultados" class="border rounded-md hover:shadow-md transition overflow-hidden">
+        <div class="bg-[#aaf9c3]/10 px-4 py-3 flex justify-between items-center">
+          <div class="flex items-center gap-2 text-lg font-semibold">
+            <i class="fas fa-file-alt text-[#aaf9c3]"></i>
+            {{ resultado.nombre }}
+          </div>
+          <span class="text-sm font-medium">{{ resultado.fecha }}</span>
+        </div>
+        <div class="px-4 py-4 flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-center">
+          <div class="space-y-1 text-sm text-gray-600">
+            <p><strong>Doctor:</strong> {{ resultado.doctor }}</p>
+            <p><strong>Tipo:</strong> {{ resultado.tipo }}</p>
+          </div>
+          <div class="flex gap-2 mt-2 sm:mt-0">
+            <button
+              class="px-4 py-2 border border-[#aaf9c3] text-black rounded-md hover:bg-[#aaf9c3]/10 transition text-sm"
+            >
+              Ver Resultado
+            </button>
+            <a
+              [href]="'/assets/resultados/' + resultado.archivo"
+              download
+              class="px-3 py-2 border border-[#aaf9c3] text-black rounded-md hover:bg-[#aaf9c3]/10 transition"
+              title="Descargar PDF"
+            >
+              <i class="fas fa-download"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #sinResultados>
+      <div class="flex flex-col items-center justify-center py-12 text-center text-gray-500">
+        <i class="fas fa-file-alt text-4xl mb-4"></i>
+        <h3 class="text-lg font-medium">No se encontraron resultados</h3>
+        <p class="text-sm mt-1">No hay resultados que coincidan con su búsqueda.</p>
+      </div>
+    </ng-template>
+  </div>
+</div>
+

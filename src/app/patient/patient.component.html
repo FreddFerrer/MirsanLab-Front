@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+
+<app-welcome-section [nombre]="nombreUsuario"></app-welcome-section>
+
+<!-- Cards -->
+<section class="px-6 flex flex-col md:flex-row gap-6">
+  <!-- Card 1 -->
+  <div class="flex-1 border-2 border-[#e5e5e5] rounded-md p-6 transition duration-300 hover:shadow-lg hover:-translate-y-1 bg-white">
+    <h2 class="text-lg font-semibold mb-1">Resultados Recientes</h2>
+    <p class="text-sm text-[#6b7280] mb-4">Accede a tus últimos análisis</p>
+    <div class="flex items-start space-x-3 mb-6">
+      <i class="fas fa-file-medical text-[#9DEFB5] text-2xl mt-1"></i>
+      <div>
+        <p class="text-sm font-semibold">Análisis de sangre completo</p>
+        <p class="text-xs text-[#6b7280]">Disponible desde: 15/05/2025</p>
+      </div>
+    </div>
+    <button class="w-full bg-[#9DEFB5] text-sm font-semibold py-2 rounded-md hover:bg-[#8fe0a9] transition duration-300">
+      Ver Resultados
+    </button>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="flex-1 border border-[#e5e5e5] rounded-md p-6 transition duration-300 hover:shadow-lg hover:-translate-y-1 bg-white">
+    <h2 class="text-lg font-semibold mb-1">Próximo Turno</h2>
+    <p class="text-sm text-[#6b7280] mb-4">Información de tu próxima visita</p>
+    <div class="flex items-start space-x-3 mb-6">
+      <i class="fas fa-calendar-day text-[#9DEFB5] text-2xl mt-1"></i>
+      <div>
+        <p class="text-sm font-semibold">Extracción de sangre</p>
+        <p class="text-xs text-[#6b7280]">Fecha: 28/05/2025 - 09:30 hs</p>
+      </div>
+    </div>
+    <button class="w-full bg-[#9DEFB5] text-sm font-semibold py-2 rounded-md hover:bg-[#8fe0a9] transition duration-300">
+      Gestionar Turno
+    </button>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="flex-1 border border-[#e5e5e5] rounded-md p-6 transition duration-300 hover:shadow-lg hover:-translate-y-1 bg-white">
+    <h2 class="text-lg font-semibold mb-1">Solicitar Nuevo Turno</h2>
+    <p class="text-sm text-[#6b7280] mb-4">Agenda tu próxima visita</p>
+    <div class="flex items-start space-x-3 mb-6">
+      <i class="fas fa-calendar-plus text-[#9DEFB5] text-2xl mt-1"></i>
+      <div>
+        <p class="text-sm font-semibold">Selecciona tipo de análisis</p>
+        <p class="text-xs text-[#6b7280]">Disponibilidad inmediata</p>
+      </div>
+    </div>
+    <button class="w-full bg-[#9DEFB5] text-sm font-semibold py-2 rounded-md hover:bg-[#8fe0a9] transition duration-300">
+      Agendar Turno
+    </button>
+  </div>
+</section>
+
+

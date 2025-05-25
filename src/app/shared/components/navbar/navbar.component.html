@@ -1,0 +1,33 @@
+<!-- Header.html -->
+<header class="flex items-center justify-between px-6 py-4 border-b border-[#e5e5e5] bg-white sticky top-0 z-10">
+  <div class="flex items-center space-x-2">
+    <img src="assets/img/MirsanLogo.png" alt="Mirsan Lab. Logo" class="h-8" />
+    <span class="text-lg font-semibold">MirSanLab</span>
+  </div>
+
+  <nav class="flex items-center space-x-6 text-sm font-medium">
+    <a href="#" class="transition-colors duration-300 hover:text-[#8fe0a9] text-[#9DEFB5]">Inicio</a>
+    <a routerLink="/paciente/resultados"
+       routerLinkActive="text-[#aaf9c3] font-semibold"
+       class="transition-colors duration-300 hover:text-[#8fe0a9] text-black">
+      Resultados
+    </a>
+    <a href="#" class="transition-colors duration-300 hover:text-[#8fe0a9] text-black">Turnos</a>
+
+
+    <!-- Botón logout (solo si está logueado) -->
+    <button
+      *ngIf="isLoggedIn"
+      (click)="logout()"
+      class="text-black hover:text-[#8fe0a9] transition duration-300 flex items-center gap-1"
+    >
+      <i class="fas fa-sign-out-alt"></i>
+      Cerrar sesión
+    </button>
+  </nav>
+</header>
+
+<!-- Mensaje de salida -->
+<div *ngIf="showLogoutMessage" class="text-center text-sm py-2 text-[#444747] bg-[#aaf9c3]/20 transition-all duration-300">
+  Cerrando sesión...
+</div>

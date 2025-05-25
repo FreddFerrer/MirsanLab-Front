@@ -1,0 +1,133 @@
+<div class="flex min-h-screen flex-col md:flex-row bg-white">
+  <!-- Sección izquierda (solo desktop) -->
+  <div class="hidden md:flex md:w-1/2 bg-[#aaf9c3]/10 items-center justify-center p-8">
+    <div class="max-w-md space-y-6">
+      <div class="flex items-center gap-2">
+        <img src="assets/img/MirsanLogo.png" alt="Mirsan Lab. Logo" class="h-8" />
+        <h1 class="text-2xl font-bold">LabSalud</h1>
+      </div>
+      <div class="space-y-2">
+        <h2 class="text-3xl font-bold">Bienvenido a su portal de salud</h2>
+        <p class="text-gray-500 text-sm">
+          Acceda a sus resultados de laboratorio, gestione sus turnos y mantenga un seguimiento de su salud desde
+          cualquier dispositivo.
+        </p>
+      </div>
+      <div class="relative h-64 w-full overflow-hidden rounded-lg">
+        <img
+          src="https://placehold.co/600x400"
+          alt="Laboratorio médico"
+          class="object-cover w-full h-full rounded-lg"
+        />
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="rounded-lg bg-white p-4 shadow-sm">
+          <div class="mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-[#aaf9c3]">
+            <i class="fas fa-arrow-right text-black text-xs"></i>
+          </div>
+          <h3 class="text-sm font-medium">Resultados al instante</h3>
+          <p class="text-xs text-gray-500">Acceda a sus análisis tan pronto estén disponibles</p>
+        </div>
+        <div class="rounded-lg bg-white p-4 shadow-sm">
+          <div class="mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-[#aaf9c3]">
+            <i class="fas fa-arrow-right text-black text-xs"></i>
+          </div>
+          <h3 class="text-sm font-medium">Turnos simplificados</h3>
+          <p class="text-xs text-gray-500">Agende sus visitas en pocos clics sin complicaciones</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulario de login -->
+  <div class="flex flex-1 items-center justify-center p-6 md:p-12">
+    <div class="w-full max-w-md border border-[#aaf9c3] rounded-md shadow-sm bg-white">
+      <div class="space-y-1 p-6 border-b">
+        <div class="flex items-center gap-2 md:hidden">
+          <div class="rounded-full bg-[#aaf9c3] p-2">
+            <i class="fas fa-flask text-black text-sm"></i>
+          </div>
+          <h2 class="text-xl font-bold">LabSalud</h2>
+        </div>
+        <h2 class="text-2xl font-bold">Iniciar sesión</h2>
+        <p class="text-sm text-gray-500">Ingrese sus credenciales para acceder a su portal de paciente</p>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4 p-6">
+
+        <!-- Muestra error de login -->
+        <div *ngIf="loginError" class="text-sm text-red-600">
+          {{ loginError }}
+        </div>
+
+        <div class="space-y-2">
+          <label for="email" class="text-sm font-medium">Email</label>
+          <div class="relative">
+            <i class="fas fa-envelope absolute left-3 top-3 text-gray-400 text-sm"></i>
+            <input
+              formControlName="email"
+              type="email"
+              id="email"
+              class="w-full border border-gray-300 rounded-md pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#aaf9c3]"
+              placeholder="nombre@ejemplo.com"
+              required
+              autocomplete="username"
+            />
+
+            <!-- errores de validación -->
+            <div *ngIf="f['email'].touched && f['email'].errors" class="text-sm text-red-600">
+              <div *ngIf="f['email'].errors['required']">El email es obligatorio.</div>
+              <div *ngIf="f['email'].errors['email']">Formato de email inválido.</div>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <div class="flex justify-between items-center">
+            <label for="password" class="text-sm font-medium">Contraseña</label>
+            <a
+              routerLink="/recuperar-password"
+              class="text-xs text-gray-500 hover:underline hover:text-black"
+              >¿Olvidó su contraseña?</a
+            >
+          </div>
+          <div class="relative">
+            <i class="fas fa-lock absolute left-3 top-3 text-gray-400 text-sm"></i>
+            <input
+              formControlName="password"
+              type="password"
+              id="password"
+              class="w-full border border-gray-300 rounded-md pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#aaf9c3]"
+              placeholder="••••••••"
+              required
+              autocomplete="current-password"
+            />
+
+            <!-- errores de validación -->
+            <div *ngIf="f['password'].touched && f['password'].errors" class="text-sm text-red-600">
+              <div *ngIf="f['password'].errors['required']">La contraseña es obligatoria.</div>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <input
+            formControlName="remember"
+            type="checkbox"
+            id="remember"
+            class="h-4 w-4 rounded border-gray-300 text-[#aaf9c3] focus:ring-[#aaf9c3]"
+          />
+          <label for="remember" class="text-sm text-gray-500">Recordar mis datos</label>
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-[#aaf9c3] text-black font-medium py-2 rounded-md hover:bg-[#8fe0a9] transition"
+        >
+          Iniciar sesión
+        </button>
+        <div class="text-center text-sm">
+          <span class="text-gray-500">¿No tiene una cuenta? </span>
+          <a routerLink="/register" class="font-medium text-black hover:underline">Regístrese aquí</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
