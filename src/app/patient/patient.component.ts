@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class PatientComponent {
   nombreUsuario = localStorage.getItem('nombre') || 'Paciente';
-
+  rolUsuario = localStorage.getItem('rol') || 'PACIENTE';
 }

@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class BioquimicoComponent {
   nombreUsuario = localStorage.getItem('nombre') || 'Bioquímico';
-
+  rolUsuario = localStorage.getItem('rol') || 'BIOQUIMICO';
 }

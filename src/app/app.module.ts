@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
+import { BioquimicoModule } from './bioquimico/bioquimico.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     PatientModule,
     CommonModule,
+    BioquimicoModule,
+    CoreModule,
     FormsModule,
     AuthModule,
     HttpClientModule

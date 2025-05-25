@@ -6,7 +6,6 @@ import { BioquimicoComponent } from './bioquimico.component';
 import { AgendaTurnosComponent } from './agenda-turnos/agenda-turnos.component';
 import { SubirResultadosComponent } from './subir-resultados/subir-resultados.component';
 import { SharedModule } from '../shared/shared.module';
-import { AuthModule } from '../auth/auth.module';
 import { FormsModule } from '@angular/forms';
 
 
@@ -20,7 +19,6 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     BioquimicoRoutingModule,
     SharedModule,
-    AuthModule,
     FormsModule
   ],
   exports: [

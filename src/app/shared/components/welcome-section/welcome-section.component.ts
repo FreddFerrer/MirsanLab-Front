@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class WelcomeSectionComponent {
   @Input() nombre: string = '';
+  @Input() rol: string = '';
 }
