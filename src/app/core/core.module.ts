@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthModule } from '../auth/auth.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -8,7 +9,8 @@ import { AuthModule } from '../auth/auth.module';
   declarations: [],
   imports: [
     CommonModule,
-    AuthModule
+    AuthModule,
+    FormsModule
   ]
 })
 export class CoreModule { }

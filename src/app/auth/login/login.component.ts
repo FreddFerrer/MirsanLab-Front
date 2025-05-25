@@ -48,10 +48,12 @@ export class LoginComponent implements OnInit {
         this.authService.setToken(resp.token);
         // Opcional: guarda nombre en localStorage
         localStorage.setItem('nombre', resp.nombre);
+        localStorage.setItem('rol', resp.rol);
+        this.authService.setToken(resp.token);
 
         // Redirige según rol
         if (resp.rol === 'ADMIN') {
-          this.router.navigate(['/bioquimico-dashboard']);
+          this.router.navigate(['/admin-dashboard']);
         } else {
           this.router.navigate(['/paciente-dashboard']);
         }

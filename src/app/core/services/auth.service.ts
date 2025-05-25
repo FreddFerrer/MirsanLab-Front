@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { fromEvent, merge, of } from 'rxjs';
 import { environment } from 'src/environment/environment';
 
 
@@ -30,9 +32,14 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  private loggedIn = new BehaviorSubject<boolean>(!!localStorage.getItem('token'));
-
-  isLoggedIn$ = this.loggedIn.asObservable();
+  isLoggedIn$ = merge(
+    of(null), // inicial
+    fromEvent(window, 'storage'), // en caso de que se cambie el token desde otro tab
+    fromEvent(window, 'load')     // recarga del navegador
+  ).pipe(
+    startWith(null),
+    map(() => !!localStorage.getItem('auth_token'))
+);
 
   /** Hace login y devuelve el token + rol */
   login(dto: LoginDto): Observable<AuthResponse> {
@@ -47,7 +54,6 @@ export class AuthService {
   /** Guarda el token en localStorage */
   setToken(token: string): void {
     localStorage.setItem('auth_token', token);
-    this.loggedIn.next(true);
   }
 
   /** Recupera el token */
@@ -57,7 +63,6 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('auth_token');
-    this.loggedIn.next(false);
   }
 
   isLoggedIn(): boolean {

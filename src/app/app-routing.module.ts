@@ -5,13 +5,15 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { PatientComponent } from './patient/patient.component';
 import { BioquimicoComponent } from './bioquimico/bioquimico.component';
+import { HistorialResultadosComponent } from './patient/historial-resultados/historial-resultados.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'paciente-dashboard', component: PatientComponent },
-  { path: 'bioquimico-dashboard', component: BioquimicoComponent }
+  { path: 'admin-dashboard', component: BioquimicoComponent },
+  { path: 'resultados', component: HistorialResultadosComponent }
 ];
 
 @NgModule({

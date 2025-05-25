@@ -6,8 +6,13 @@
   </div>
 
   <nav class="flex items-center space-x-6 text-sm font-medium">
-    <a href="#" class="transition-colors duration-300 hover:text-[#8fe0a9] text-[#9DEFB5]">Inicio</a>
-    <a routerLink="/paciente/resultados"
+    <button
+      (click)="goHome()"
+      class="transition-colors duration-300 hover:text-[#8fe0a9] text-[#9DEFB5]"
+    >
+  Inicio
+</button>
+    <a routerLink="/resultados"
        routerLinkActive="text-[#aaf9c3] font-semibold"
        class="transition-colors duration-300 hover:text-[#8fe0a9] text-black">
       Resultados
