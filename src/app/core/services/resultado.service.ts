@@ -25,6 +25,11 @@ export class ResultadoService {
     });
   }
 
+  abrirResultado(id: number): void {
+    const url = `http://localhost:8080/api/resultados/${id}/descargar`;
+    window.open(url, '_blank');
+  }
+
   subirResultado(pacienteId: string, archivo: File): Observable<any> {
   const formData = new FormData();
   formData.append('pacienteId', pacienteId);

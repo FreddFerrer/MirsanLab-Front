@@ -120,33 +120,61 @@
   </section>
 
   <!-- Ubicación -->
-  <section id="ubicacion" class="bg-[#aaf9c3]/10 py-14 text-center text-lg">
+  <section id="ubicacion" class="bg-[#aaf9c3]/10 py-14 text-center text-[17px]">
     <h2 class="text-3xl font-bold text-[#444747] mb-2">Ubicación</h2>
-    <p class="text-[#6b7280] mb-6">San Juan 335, Quitilipi Chaco, Argentina.</p>
+    <p class="text-[#6b7280] mb-6">San Juan 335, Quitilipi, Chaco, Argentina.</p>
+
     <div class="w-full max-w-4xl mx-auto aspect-video rounded-lg overflow-hidden shadow-md">
       <iframe
         class="w-full h-full"
-        src="https://www.google.com/maps/embed?...tu_URL..."
         style="border: 0"
-        allowfullscreen=""
         loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3574.663543661198!2d-60.21660082463388!3d-26.865984476662525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94406e2e5b2ef909%3A0x3f5af8f404e85899!2sSan%20Juan%20335%2C%20Quitilipi%2C%20Chaco!5e0!3m2!1ses!2sar!4v1716831086427!5m2!1ses!2sar"
       ></iframe>
     </div>
   </section>
 
+
   <!-- Footer -->
-  <footer class="bg-[#263138] text-white py-6 text-[17px]">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+<footer class="bg-[#263138] text-white text-[17px]">
+  <div class="max-w-6xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+    
+    <!-- Logo y descripción -->
+    <div class="flex flex-col items-center md:items-start gap-3">
       <div class="flex items-center gap-2">
-        <img src="assets/img/MirsanLogo.png" class="h-6" />
-        <span class="font-bold text-white text-xl">Mirsan Lab.</span>
+        <img src="assets/img/MirsanLogo.png" class="h-8" alt="Logo Mirsan" />
+        <span class="text-2xl font-bold">Mirsan Lab.</span>
       </div>
-      <div class="text-base mt-4 md:mt-0 space-x-6">
-        <a href="#nosotros" class="hover:underline">Nosotros</a>
-        <a href="#ubicacion" class="hover:underline">Ubicación</a>
-        <a href="#contact-form" class="hover:underline">Contacto</a>
+      <p class="text-sm text-gray-300 text-center md:text-left">
+        Comprometidos con tu salud. Resultados precisos, atención humana.
+      </p>
+    </div>
+
+    <!-- Enlaces -->
+    <div class="flex flex-col items-center gap-2">
+      <h3 class="text-lg font-semibold text-[#aaf9c3]">Navegación</h3>
+      <a href="#nosotros" class="hover:text-[#aaf9c3] transition">Nosotros</a>
+      <a href="#ubicacion" class="hover:text-[#aaf9c3] transition">Ubicación</a>
+      <a href="#contact-form" class="hover:text-[#aaf9c3] transition">Contacto</a>
+    </div>
+
+    <!-- Redes sociales -->
+    <div class="flex flex-col items-center gap-3">
+      <h3 class="text-lg font-semibold text-[#aaf9c3]">Seguinos</h3>
+      <div class="flex gap-4 text-xl">
+        <a href="#" class="hover:text-[#aaf9c3] transition"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="hover:text-[#aaf9c3] transition"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="hover:text-[#aaf9c3] transition"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
-    <p class="text-center text-sm text-white mt-4">© 2025 Mirsan Lab. Todos los derechos reservados.</p>
-  </footer>
+  </div>
+
+  <!-- Línea inferior -->
+  <div class="border-t border-[#aaf9c3]/20 py-4 text-center text-sm text-gray-400">
+    © 2025 Mirsan Lab. Todos los derechos reservados.
+  </div>
+</footer>
+
 </div>

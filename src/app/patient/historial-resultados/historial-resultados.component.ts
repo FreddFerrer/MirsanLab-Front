@@ -24,6 +24,19 @@ export class HistorialResultadosComponent implements OnInit {
   });
 }
 
+verResultado(id: number): void {
+  this.resultadoService.descargarResultado(id).subscribe({
+    next: (blob) => {
+      const url = window.URL.createObjectURL(blob);
+      window.open(url, '_blank');
+    },
+    error: () => {
+      alert('No se pudo abrir el archivo. Verificá tu sesión o permisos.');
+      }
+    });
+  }
+
+
   descargar(id: number): void {
   this.resultadoService.descargarResultado(id).subscribe({
     next: (blob) => {
