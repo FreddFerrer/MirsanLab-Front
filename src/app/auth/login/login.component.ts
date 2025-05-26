@@ -53,9 +53,9 @@ export class LoginComponent implements OnInit {
 
         // Redirige según rol
         if (resp.rol === 'ADMIN') {
-          this.router.navigate(['/admin-dashboard']);
+          this.router.navigate(['/admin-dashboard'], { replaceUrl: true });
         } else {
-          this.router.navigate(['/paciente-dashboard']);
+          this.router.navigate(['/paciente-dashboard'], { replaceUrl: true });
         }
       },
       error: err => {

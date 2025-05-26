@@ -1,1 +1,65 @@
-<p>schedule-turno works!</p>
+<app-navbar></app-navbar>
+
+<section class="px-6 py-10 max-w-4xl mx-auto">
+  <h1 class="text-4xl font-bold mb-6 text-[#444747]">Reservar un Turno</h1>
+
+  <p class="text-base text-gray-700 mb-6">
+    Podés sacar turnos para los próximos <strong>30 días hábiles</strong> (lunes a viernes). Los sábados y domingos el laboratorio no atiende.
+  </p>
+
+  <!-- ✅ Mensajes -->
+  <div *ngIf="successMsg" class="bg-green-100 text-green-800 px-4 py-2 rounded mb-4">
+    {{ successMsg }}
+  </div>
+  <div *ngIf="errorMsg" class="bg-red-100 text-red-800 px-4 py-2 rounded mb-4">
+    {{ errorMsg }}
+  </div>
+
+  <!-- Fechas disponibles -->
+  <div class="mb-8">
+    <h2 class="text-2xl font-semibold mb-3 text-[#444747]">Fechas disponibles</h2>
+    <div class="flex flex-wrap gap-4">
+      <button
+        *ngFor="let turno of turnos"
+        (click)="seleccionarFecha(turno.fecha)"
+        [class.bg-[#9DEFB5]]="fechaSeleccionada === turno.fecha"
+        [class.text-white]="fechaSeleccionada === turno.fecha"
+        class="px-5 py-3 border rounded-md text-base hover:bg-[#8fe0a9] transition duration-300"
+      >
+        {{ turno.fecha | date:'EEEE d/M' }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Horarios disponibles -->
+  <div *ngIf="fechaSeleccionada" class="mb-10">
+    <h2 class="text-2xl font-semibold mb-3 text-[#444747]">Horarios para {{ fechaSeleccionada | date:'EEEE d/M' }}</h2>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <button
+        *ngFor="let hora of obtenerHorariosSeleccionados()"
+        (click)="seleccionarHorario(hora)"
+        [class.bg-[#9DEFB5]]="horarioSeleccionado === hora"
+        [class.text-white]="horarioSeleccionado === hora"
+        class="px-4 py-2 border rounded-md text-base hover:bg-[#8fe0a9] transition duration-300"
+      >
+        {{ hora }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Confirmar -->
+  <div class="mt-10">
+    <button
+      (click)="confirmarTurno()"
+      [disabled]="!fechaSeleccionada || !horarioSeleccionado"
+      class="w-full md:w-auto px-8 py-4 bg-[#9DEFB5] text-black text-lg font-semibold rounded-md hover:bg-[#8fe0a9] transition disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Confirmar Turno
+    </button>
+
+    <div *ngIf="!fechaSeleccionada || !horarioSeleccionado" class="text-base text-gray-600 mt-3">
+      Seleccioná una fecha y horario para continuar.
+    </div>
+  </div>
+</section>

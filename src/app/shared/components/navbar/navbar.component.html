@@ -1,38 +1,95 @@
-<!-- Header.html -->
-<header class="flex items-center justify-between px-6 py-4 border-b border-[#e5e5e5] bg-white sticky top-0 z-10">
-  <div class="flex items-center space-x-2">
-    <img src="assets/img/MirsanLogo.png" alt="Mirsan Lab. Logo" class="h-8" />
-    <span class="text-lg font-semibold">MirSanLab</span>
+<header class="bg-white border-b border-[#e5e5e5] sticky top-0 z-10">
+  <div class="flex justify-between items-center px-6 py-4">
+    <!-- Logo -->
+    <div class="flex items-center space-x-2">
+      <img src="assets/img/MirsanLogo.png" alt="Mirsan Lab. Logo" class="h-8" />
+      <span class="text-lg font-semibold">MirSanLab</span>
+    </div>
+
+    <!-- Botón hamburguesa (solo en mobile) -->
+    <button
+      (click)="toggleMenu()"
+      class="md:hidden text-2xl text-[#444747] focus:outline-none"
+    >
+      ☰
+    </button>
+
+    <!-- Menú en desktop -->
+    <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+      <button
+        (click)="goHome()"
+        [ngClass]="{
+          'text-[#9DEFB5] font-semibold': currentRoute.includes('/dashboard'),
+          'text-black': !currentRoute.includes('/dashboard')
+        }"
+        class="transition-colors duration-300 hover:text-[#8fe0a9]"
+      >
+        Inicio
+      </button>
+      <button
+        (click)="irAResultados()"
+        [ngClass]="{
+          'text-[#9DEFB5] font-semibold': currentRoute.includes('/resultados') || currentRoute.includes('/admin-subir-resultados'),
+          'text-black': !(currentRoute.includes('/resultados') || currentRoute.includes('/admin-subir-resultados'))
+        }"
+        class="transition-colors duration-300 hover:text-[#8fe0a9]"
+      >
+        Resultados
+      </button>
+      <button
+        (click)="irATurnos()"
+        [ngClass]="{
+          'text-[#9DEFB5] font-semibold': currentRoute.includes('/turnos'),
+          'text-black': !currentRoute.includes('/turnos')
+        }"
+        class="transition-colors duration-300 hover:text-[#8fe0a9]"
+      >
+        Turnos
+      </button>
+      <button
+        *ngIf="isLoggedIn"
+        (click)="logout()"
+        class="text-black hover:text-[#8fe0a9] transition duration-300 flex items-center gap-1"
+      >
+        <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+      </button>
+    </nav>
   </div>
 
-  <nav class="flex items-center space-x-6 text-sm font-medium">
+  <!-- Menú en mobile (visible solo si está abierto) -->
+  <div *ngIf="menuAbierto" class="md:hidden px-6 pb-4 space-y-3 text-sm font-medium">
     <button
       (click)="goHome()"
-      class="transition-colors duration-300 hover:text-[#8fe0a9] text-[#9DEFB5]"
+      class="block w-full text-left text-[#444747] hover:text-[#8fe0a9]"
     >
-  Inicio
-</button>
-    <a routerLink="/resultados"
-       routerLinkActive="text-[#aaf9c3] font-semibold"
-       class="transition-colors duration-300 hover:text-[#8fe0a9] text-black">
+      Inicio
+    </button>
+    <button
+      (click)="irAResultados()"
+      class="block w-full text-left text-[#444747] hover:text-[#8fe0a9]"
+    >
       Resultados
-    </a>
-    <a href="#" class="transition-colors duration-300 hover:text-[#8fe0a9] text-black">Turnos</a>
-
-
-    <!-- Botón logout (solo si está logueado) -->
+    </button>
+    <button
+      (click)="irATurnos()"
+      class="block w-full text-left text-[#444747] hover:text-[#8fe0a9]"
+    >
+      Turnos
+    </button>
     <button
       *ngIf="isLoggedIn"
       (click)="logout()"
-      class="text-black hover:text-[#8fe0a9] transition duration-300 flex items-center gap-1"
+      class="block w-full text-left text-[#444747] hover:text-[#8fe0a9]"
     >
-      <i class="fas fa-sign-out-alt"></i>
       Cerrar sesión
     </button>
-  </nav>
-</header>
+  </div>
 
-<!-- Mensaje de salida -->
-<div *ngIf="showLogoutMessage" class="text-center text-sm py-2 text-[#444747] bg-[#aaf9c3]/20 transition-all duration-300">
-  Cerrando sesión...
-</div>
+  <!-- Mensaje de salida -->
+  <div
+    *ngIf="showLogoutMessage"
+    class="text-center text-sm py-2 text-[#444747] bg-[#aaf9c3]/20 transition-all duration-300"
+  >
+    Cerrando sesión...
+  </div>
+</header>

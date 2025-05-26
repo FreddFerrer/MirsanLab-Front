@@ -1,201 +1,152 @@
-<div class="min-h-screen bg-gradient-to-b from-[#aaf9c3] via-white to-[#f0fdfa]">
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-  <nav class="flex items-center justify-between px-6 py-4">
-    <div class="flex items-center gap-2">
-      <img src="assets/img/MirsanLogo.png" alt="Mirsan Lab. Logo" class="h-8" />
-      <span class="text-xl font-bold text-[#444747]">Mirsan Lab.</span>
-    </div>
-    <div class="hidden md:flex gap-4 text-sm font-medium">
-      <a href="#header" class="text-[#444747] hover:text-[#8fe0a9] transition">Home</a>
-      <a href="#nosotros" class="text-[#444747] hover:text-[#8fe0a9] transition">Nosotros</a>
-      <a routerLink="/login" class="text-[#444747] hover:text-[#8fe0a9] transition">Login</a>
-    </div>
-  </nav>
-</header>
+<div class="min-h-screen bg-gradient-to-b from-[#aaf9c3] via-white to-[#f0fdfa] text-[17px]">
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <nav class="flex items-center justify-between px-6 py-4">
+      <div class="flex items-center gap-2">
+        <img src="assets/img/MirsanLogo.png" alt="Mirsan Lab. Logo" class="h-8" />
+        <span class="text-2xl font-bold text-[#444747]">Mirsan Lab.</span>
+      </div>
+      <div class="hidden md:flex gap-6 text-lg font-medium">
+        <a href="#header" class="text-[#444747] hover:text-[#8fe0a9] transition">Home</a>
+        <a href="#nosotros" class="text-[#444747] hover:text-[#8fe0a9] transition">Nosotros</a>
+        <a routerLink="/login" class="text-[#444747] hover:text-[#8fe0a9] transition">Login</a>
+      </div>
+    </nav>
+  </header>
 
-
-<section class="flex flex-col lg:flex-row h-[500px]">
-  <div class="flex-1 flex items-center justify-center px-6">
-    <div class="max-w-xl space-y-4 text-center lg:text-left">
-      <h1 class="text-3xl md:text-4xl font-bold text-[#444747]">
-        Tu laboratorio de confianza
-      </h1>
-      <p class="text-sm md:text-base text-[#6b7280]">
-        Nos especializamos en pruebas y análisis de alta precisión, con atención personalizada para cada paciente.
-      </p>
-      <div class="mt-4">
-        <a
-          routerLink="/login"
-          class="inline-block px-6 py-2 bg-[#aaf9c3] text-black text-sm font-semibold rounded hover:bg-[#8fe0a9] transition"
-        >
-          Ingresar
-        </a>
+  <section class="flex flex-col lg:flex-row h-[500px]">
+    <div class="flex-1 flex items-center justify-center px-6">
+      <div class="max-w-xl space-y-6 text-center lg:text-left">
+        <h1 class="text-4xl font-bold text-[#444747]">Tu laboratorio de confianza</h1>
+        <p class="text-lg text-[#6b7280]">
+          Nos especializamos en pruebas y análisis de alta precisión, con atención personalizada para cada paciente.
+        </p>
+        <div class="mt-4">
+          <a
+            routerLink="/login"
+            class="inline-block px-6 py-3 bg-[#aaf9c3] text-black text-base font-semibold rounded hover:bg-[#8fe0a9] transition"
+          >
+            Ingresar
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="hidden lg:block flex-1 relative">
-    <div
-      class="absolute inset-0 bg-cover bg-center"
-      style="background-image: url('assets/img/analisis-fondo.jpg'); clip-path: polygon(25% 0, 100% 0%, 100% 100%, 0 100%);"
-    >
-      <div class="w-full h-full bg-black bg-opacity-20"></div>
+    <div class="hidden lg:block flex-1 relative">
+      <div
+        class="absolute inset-0 bg-cover bg-center"
+        style="background-image: url('assets/img/analisis-fondo.jpg'); clip-path: polygon(25% 0, 100% 0%, 100% 100%, 0 100%);"
+      >
+        <div class="w-full h-full bg-black bg-opacity-20"></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="nosotros" class="container mx-auto px-4 py-10 space-y-10">
-  <div class="flex flex-col md:flex-row bg-white rounded-lg overflow-hidden shadow-md">
-    <div
-      class="md:w-2/5 bg-cover bg-center"
-      style="background-image: url('assets/img/servicio-1.jpg')"
-    ></div>
-    <div class="md:w-3/5 p-6 md:p-10">
-      <h3 class="text-2xl font-bold text-[#444747]">Tecnología de Vanguardia</h3>
-      <p class="mt-4 text-[#6b7280] text-justify">
-        Contamos con tecnología de última generación para realizar una amplia variedad de estudios clínicos con resultados precisos.
-      </p>
+  <section id="nosotros" class="container mx-auto px-4 py-14 space-y-14 text-lg">
+    <div class="flex flex-col md:flex-row bg-white rounded-lg overflow-hidden shadow-md">
+      <div
+        class="md:w-2/5 bg-cover bg-center"
+        style="background-image: url('assets/img/servicio-1.jpg')"
+      ></div>
+      <div class="md:w-3/5 p-6 md:p-10">
+        <h3 class="text-3xl font-bold text-[#444747]">Tecnología de Vanguardia</h3>
+        <p class="mt-4 text-[#6b7280] text-justify">
+          Contamos con tecnología de última generación para realizar una amplia variedad de estudios clínicos con resultados precisos.
+        </p>
+      </div>
     </div>
-  </div>
 
-  <div class="flex flex-col md:flex-row bg-white rounded-lg overflow-hidden shadow-md">
-    <div
-      class="md:w-2/5 bg-cover bg-center"
-      style="background-image: url('assets/img/servicio-2.jpg')"
-    ></div>
-    <div class="md:w-3/5 p-6 md:p-10">
-      <h3 class="text-2xl font-bold text-[#444747]">Atención Personalizada</h3>
-      <p class="mt-4 text-[#6b7280] text-justify">
-        Creemos en brindar una atención única a cada paciente. Resultados listos en 48 horas para una atención rápida y eficaz.
-      </p>
+    <div class="flex flex-col md:flex-row bg-white rounded-lg overflow-hidden shadow-md">
+      <div
+        class="md:w-2/5 bg-cover bg-center"
+        style="background-image: url('assets/img/servicio-2.jpg')"
+      ></div>
+      <div class="md:w-3/5 p-6 md:p-10">
+        <h3 class="text-3xl font-bold text-[#444747]">Atención Personalizada</h3>
+        <p class="mt-4 text-[#6b7280] text-justify">
+          Creemos en brindar una atención única a cada paciente. Resultados listos en 48 horas para una atención rápida y eficaz.
+        </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-  <!--galeria-->
-<section class="text-[#444747] body-font pb-12">
+  <!-- Galería -->
+  <section class="text-[#444747] body-font pb-14 text-lg">
     <div class="container mx-auto px-2" id="galeria">
-      <div class="flex flex-col text-center w-full mb-20">
-        <h2 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Galeria de fotos</h2>
+      <div class="flex flex-col text-center w-full mb-16">
+        <h2 class="text-3xl font-bold text-gray-900">Galería de fotos</h2>
       </div>
       <div class="container mx-auto p-4">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div class="grid gap-4">
             <div data-aos="flip-up">
-              <img
-                class="h-auto max-w-full rounded-lg"
-                src="assets/img/galeria-1.jpeg"
-                alt=""
-              />
+              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-1.jpeg" alt="" />
             </div>
             <div data-aos="flip-left">
-              <img
-                class="h-auto max-w-full rounded-lg"
-                src="assets/img/galeria-2.jpeg"
-                alt=""
-              />
+              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-2.jpeg" alt="" />
             </div>
             <div data-aos="zoom-in">
-              <img
-                class="h-auto max-w-full rounded-lg"
-                src="assets/img/galeria-3.jpeg"
-                alt=""
-              />
+              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-3.jpeg" alt="" />
             </div>
           </div>
           <div class="grid gap-4">
             <div data-aos="zoom-out">
-              <img
-                class="h-auto max-w-full rounded-lg"
-                src="assets/img/galeria-4.jpeg"
-                alt=""
-              />
+              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-4.jpeg" alt="" />
             </div>
             <div data-aos="zoom-out">
-              <img
-                class="h-auto max-w-full rounded-lg"
-                src="assets/img/galeria-5.jpeg"
-                alt=""
-              />
+              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-5.jpeg" alt="" />
             </div>
             <div data-aos="flip-up">
-              <img
-                class="h-auto max-w-full rounded-lg"
-                src="assets/img/galeria-6.jpeg"
-                alt=""
-              />
+              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-6.jpeg" alt="" />
             </div>
           </div>
           <div class="grid gap-4">
             <div data-aos="flip-up">
-              <img
-                class="h-auto max-w-full rounded-lg"
-                src="assets/img/galeria-7.jpeg"
-                alt=""
-              />
+              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-7.jpeg" alt="" />
             </div>
             <div data-aos="zoom-out">
-              <img
-                class="h-auto max-w-full rounded-lg"
-                src="assets/img/galeria-8.jpeg"
-                alt=""
-              />
+              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-8.jpeg" alt="" />
             </div>
-            
           </div>
           <div class="grid gap-4">
             <div data-aos="flip-left">
-              <img
-                class="h-auto max-w-full rounded-lg"
-                src="assets/img/galeria-9.jpeg"
-                alt=""
-              />
+              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-9.jpeg" alt="" />
             </div>
             <div data-aos="flip-up">
-              <img
-                class="h-auto max-w-full rounded-lg"
-                src="assets/img/galeria-10.jpeg"
-                alt=""
-              />
+              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-10.jpeg" alt="" />
             </div>
-            
           </div>
         </div>
       </div>
     </div>
-</section>
+  </section>
 
-
-<section id="ubicacion" class="bg-[#aaf9c3]/10 py-10 text-center">
-  <h2 class="text-3xl font-bold text-[#444747] mb-2">Ubicación</h2>
-  <p class="text-[#6b7280] mb-6">San Juan 335, Quitilipi Chaco, Argentina.</p>
-  <div class="w-full max-w-4xl mx-auto aspect-video rounded-lg overflow-hidden shadow-md">
-    <iframe
-      class="w-full h-full"
-      src="https://www.google.com/maps/embed?...tu_URL..."
-      style="border: 0"
-      allowfullscreen=""
-      loading="lazy"
-    ></iframe>
-  </div>
-</section>
-
-
-<footer class="bg-[#263138] text-white py-6">
-  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-    <div class="flex items-center gap-2">
-      <img src="assets/img/MirsanLogo.png" class="h-6" />
-      <span class="font-bold text-white text-lg">Mirsan Lab.</span>
+  <!-- Ubicación -->
+  <section id="ubicacion" class="bg-[#aaf9c3]/10 py-14 text-center text-lg">
+    <h2 class="text-3xl font-bold text-[#444747] mb-2">Ubicación</h2>
+    <p class="text-[#6b7280] mb-6">San Juan 335, Quitilipi Chaco, Argentina.</p>
+    <div class="w-full max-w-4xl mx-auto aspect-video rounded-lg overflow-hidden shadow-md">
+      <iframe
+        class="w-full h-full"
+        src="https://www.google.com/maps/embed?...tu_URL..."
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
     </div>
-    <div class="text-sm text-white mt-4 md:mt-0 space-x-4">
-      <a href="#nosotros" class="hover:underline">Nosotros</a>
-      <a href="#ubicacion" class="hover:underline">Ubicación</a>
-      <a href="#contact-form" class="hover:underline">Contacto</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#263138] text-white py-6 text-[17px]">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+      <div class="flex items-center gap-2">
+        <img src="assets/img/MirsanLogo.png" class="h-6" />
+        <span class="font-bold text-white text-xl">Mirsan Lab.</span>
+      </div>
+      <div class="text-base mt-4 md:mt-0 space-x-6">
+        <a href="#nosotros" class="hover:underline">Nosotros</a>
+        <a href="#ubicacion" class="hover:underline">Ubicación</a>
+        <a href="#contact-form" class="hover:underline">Contacto</a>
+      </div>
     </div>
-  </div>
-  <p class="text-center text-xs text-white mt-4">© 2025 Mirsan Lab. Todos los derechos reservados.</p>
-</footer>
+    <p class="text-center text-sm text-white mt-4">© 2025 Mirsan Lab. Todos los derechos reservados.</p>
+  </footer>
 </div>
-
-
-  

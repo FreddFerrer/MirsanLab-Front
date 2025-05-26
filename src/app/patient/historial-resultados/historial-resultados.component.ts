@@ -13,20 +13,32 @@ export class HistorialResultadosComponent implements OnInit {
   constructor(private resultadoService: ResultadoService) {}
 
   ngOnInit(): void {
-    this.resultadoService.getResultados().subscribe({
-      next: (resp) => {
-        this.resultados = resp.content;
-        this.cargando = false;
-      },
-      error: () => {
-        this.cargando = false;
+  this.resultadoService.getResultados().subscribe({
+    next: (resultados) => {
+      this.resultados = resultados;
+      this.cargando = false;
+    },
+    error: () => {
+      this.cargando = false;
+    }
+  });
+}
+
+  descargar(id: number): void {
+  this.resultadoService.descargarResultado(id).subscribe({
+    next: (blob) => {
+      const downloadUrl = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = downloadUrl;
+      a.download = `resultado_${id}.pdf`; // o cualquier nombre
+      a.click();
+      window.URL.revokeObjectURL(downloadUrl);
+    },
+      error: (err) => {
+        console.error('❌ Error al descargar el archivo:', err);
       }
     });
   }
 
-  descargar(archivoUrl: string): void {
-    const baseUrl = 'http://localhost:8080/';
-    const urlCompleta = baseUrl + archivoUrl.replace(/\\/g, '/');
-    window.open(urlCompleta, '_blank');
-  }
+
 }

@@ -1,7 +1,7 @@
-<section class="px-6 py-8">
-  <h1 class="text-3xl font-bold mb-2">Bienvenido, {{ nombre }}</h1>
-  <p class="text-[#6b7280] text-base">
-    <ng-container *ngIf="rol === 'BIOQUIMICO'; else pacienteMsg">
+<section class="px-6 py-10 max-w-4xl mx-auto">
+  <h1 class="text-4xl font-bold mb-4 text-[#444747]">Bienvenido, {{ nombre }}</h1>
+  <p class="text-lg text-[#6b7280] leading-relaxed">
+    <ng-container *ngIf="rol === 'ADMIN'; else pacienteMsg">
       Aquí puede ver los turnos asignados y subir resultados de laboratorio.
     </ng-container>
     <ng-template #pacienteMsg>

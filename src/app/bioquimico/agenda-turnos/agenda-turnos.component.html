@@ -1,1 +1,49 @@
-<p>agenda-turnos works!</p>
+<app-navbar></app-navbar>
+
+<section class="px-6 py-8 max-w-6xl mx-auto">
+  <h1 class="text-3xl font-bold mb-6 text-[#444747]">Turnos Pendientes</h1>
+
+  <!-- Mensajes -->
+  <div *ngIf="successMsg" class="bg-green-100 text-green-800 px-4 py-2 rounded mb-4">
+    {{ successMsg }}
+  </div>
+  <div *ngIf="errorMsg" class="bg-red-100 text-red-800 px-4 py-2 rounded mb-4">
+    {{ errorMsg }}
+  </div>
+
+  <div *ngIf="cargando" class="text-gray-500 text-base">Cargando turnos...</div>
+  <div *ngIf="error" class="text-red-600 text-base">{{ error }}</div>
+
+  <div *ngIf="!cargando && turnos.length === 0" class="text-gray-500 text-base">
+    No hay turnos pendientes asignados.
+  </div>
+
+  <div *ngIf="!cargando && turnos.length > 0" class="space-y-4">
+    <div
+      *ngFor="let turno of turnos"
+      class="border border-gray-200 rounded-md bg-white p-4 flex justify-between items-center shadow-sm hover:shadow-md transition"
+    >
+      <div>
+        <p class="text-lg font-semibold">Paciente: {{ turno.nombrePaciente }}</p>
+        <p class="text-sm text-gray-600">Fecha: {{ turno.fecha }} - Hora: {{ turno.hora }}</p>
+        <p class="text-sm text-gray-500">
+          Email: {{ turno.emailPaciente }} | Teléfono: {{ turno.telefonoPaciente }}
+        </p>
+      </div>
+      <div class="flex gap-2">
+        <button
+          (click)="marcarRealizado(turno.id)"
+          class="bg-green-100 text-green-800 px-3 py-1 text-sm rounded hover:bg-green-200 transition"
+        >
+          Realizado
+        </button>
+        <button
+          (click)="cancelarTurno(turno.id)"
+          class="bg-red-100 text-red-800 px-3 py-1 text-sm rounded hover:bg-red-200 transition"
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

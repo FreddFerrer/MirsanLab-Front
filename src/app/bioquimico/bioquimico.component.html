@@ -1,9 +1,6 @@
 <app-navbar></app-navbar>
-
 <app-welcome-section [nombre]="nombreUsuario" [rol]="rolUsuario"></app-welcome-section>
 
-
-<!-- Admin (Bioquímico) Dashboard -->
 <section class="px-6 flex flex-col md:flex-row gap-6">
   <!-- Card 1: Turnos Programados -->
   <div class="flex-1 border border-[#e5e5e5] rounded-md p-6 transition duration-300 hover:shadow-lg hover:-translate-y-1 bg-white">
@@ -12,11 +9,13 @@
     <div class="flex items-start space-x-3 mb-6">
       <i class="fas fa-calendar-week text-[#9DEFB5] text-2xl mt-1"></i>
       <div>
-        <p class="text-sm font-semibold">5 turnos programados</p>
-        <p class="text-xs text-[#6b7280]">Semana del 27/05 al 31/05</p>
+        <p class="text-sm font-semibold">{{ turnosSemana.length }} turnos programados</p>
+        <p class="text-xs text-[#6b7280]">Semana del {{ fechaInicioSemana }} al {{ fechaFinSemana }}</p>
       </div>
     </div>
-    <button class="w-full bg-[#9DEFB5] text-sm font-semibold py-2 rounded-md hover:bg-[#8fe0a9] transition duration-300">
+    <button
+      (click)="verTurnos()"
+      class="w-full bg-[#9DEFB5] text-sm font-semibold py-2 rounded-md hover:bg-[#8fe0a9] transition duration-300">
       Ver Turnos
     </button>
   </div>
@@ -29,13 +28,13 @@
       <i class="fas fa-upload text-[#9DEFB5] text-2xl mt-1"></i>
       <div>
         <p class="text-sm font-semibold">Formulario disponible</p>
-        <p class="text-xs text-[#6b7280]">Ingrese nombre del paciente, tipo de estudio y archivo</p>
+        <p class="text-xs text-[#6b7280]">Ingrese nombre del paciente y el archivo PDF.</p>
       </div>
     </div>
-    <button class="w-full bg-[#9DEFB5] text-sm font-semibold py-2 rounded-md hover:bg-[#8fe0a9] transition duration-300">
+    <button
+      (click)="irASubirResultados()"
+      class="w-full bg-[#9DEFB5] text-sm font-semibold py-2 rounded-md hover:bg-[#8fe0a9] transition duration-300">
       Subir Resultado
     </button>
   </div>
 </section>
-
-

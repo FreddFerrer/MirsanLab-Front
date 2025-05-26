@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Resultado } from 'src/app/shared/models/resultado.model';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -12,7 +13,23 @@ export class ResultadoService {
 
   constructor(private http: HttpClient) {}
 
-  getResultados(): Observable<{ content: Resultado[] }> {
-    return this.http.get<{ content: Resultado[] }>(this.apiUrl);
+  getResultados(): Observable<Resultado[]> {
+  return this.http.get<any>(this.apiUrl).pipe(
+    map(response => response.content as Resultado[])
+  );}
+
+  descargarResultado(id: number): Observable<Blob> {
+    const url = `${this.apiUrl}/${id}/descargar`;
+    return this.http.get(url, {
+      responseType: 'blob'  
+    });
   }
+
+  subirResultado(pacienteId: string, archivo: File): Observable<any> {
+  const formData = new FormData();
+  formData.append('pacienteId', pacienteId);
+  formData.append('archivo', archivo);
+
+  return this.http.post(`${this.apiUrl}`, formData);
+}
 }

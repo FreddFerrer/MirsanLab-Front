@@ -1,1 +1,74 @@
-<p>subir-resultados works!</p>
+<app-navbar></app-navbar>
+
+<section class="px-6 py-10 max-w-xl mx-auto">
+  <h1 class="text-3xl font-bold mb-6 text-center">Subir Resultados de Laboratorio</h1>
+
+  <!-- Mensajes -->
+  <div *ngIf="successMsg" class="bg-green-100 text-green-800 px-4 py-2 rounded mb-4">
+    {{ successMsg }}
+  </div>
+  <div *ngIf="errorMsg" class="bg-red-100 text-red-800 px-4 py-2 rounded mb-4">
+    {{ errorMsg }}
+  </div>
+
+  <div class="max-w-xl mx-auto space-y-6">
+
+  <!-- 🔍 Buscador -->
+  <div>
+    <label class="block text-lg font-semibold mb-2">Buscar paciente</label>
+    <input
+      type="text"
+      [formControl]="pacienteInput"
+      placeholder="Nombre, email o teléfono"
+      class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#aaf9c3]"
+    />
+
+    <!-- 🧠 Sugerencias -->
+    <ul
+      *ngIf="pacientesFiltrados.length > 0 && !pacienteSeleccionado"
+      class="border border-gray-300 rounded-md mt-2 divide-y max-h-60 overflow-y-auto bg-white"
+    >
+      <li
+        *ngFor="let paciente of pacientesFiltrados"
+        (click)="seleccionarPaciente(paciente)"
+        class="px-4 py-2 cursor-pointer hover:bg-[#f0fdf4] transition"
+      >
+        <span class="font-medium">{{ paciente.nombre }}</span>
+        <span class="text-sm text-gray-500 block">{{ paciente.email }} | {{ paciente.telefono }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 💠 Chip del paciente seleccionado -->
+  <div *ngIf="pacienteSeleccionado" class="flex items-center justify-between bg-[#e6fcef] border border-[#9DEFB5] px-4 py-2 rounded-md">
+    <div>
+      <p class="font-semibold">{{ pacienteSeleccionado.nombre }}</p>
+      <p class="text-sm text-gray-600">{{ pacienteSeleccionado.email }} | {{ pacienteSeleccionado.telefono }}</p>
+    </div>
+    <button (click)="eliminarSeleccion()" class="text-red-500 font-bold text-xl hover:scale-110 transition">&times;</button>
+  </div>
+
+  <!-- 📎 Formulario de carga -->
+  <form *ngIf="pacienteSeleccionado" (ngSubmit)="subirArchivo()" enctype="multipart/form-data" class="space-y-4">
+    <div>
+      <label class="block text-lg font-medium mb-2">Seleccionar archivo PDF</label>
+      <input
+        type="file"
+        accept=".pdf"
+        (change)="onFileSelected($event)"
+        class="w-full border border-gray-300 rounded-md px-4 py-2"
+      />
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="!archivoSeleccionado"
+      class="bg-[#9DEFB5] text-black font-semibold px-4 py-2 rounded-md hover:bg-[#8fe0a9] transition"
+    >
+      Subir Resultado
+    </button>
+  </form>
+
+</div>
+
+</section>
