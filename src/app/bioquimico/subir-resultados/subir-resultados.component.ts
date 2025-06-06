@@ -65,7 +65,7 @@ export class SubirResultadosComponent implements OnInit {
   formData.append('pacienteId', this.pacienteSeleccionado.id.toString());
   formData.append('archivo', this.archivoSeleccionado);
 
-  this.http.post('http://srv855052.hstgr.cloud:8080/api/resultados', formData).subscribe({
+  this.http.post('http://mirsanlab.site:8080/api/resultados', formData).subscribe({
     next: () => {
       this.successMsg = 'Resultado subido correctamente.';
       this.errorMsg = null;

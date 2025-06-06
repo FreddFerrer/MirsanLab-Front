@@ -51,14 +51,14 @@ export class TurnoService {
   }
 
   getProximoTurno(): Observable<Turno | null> {
-  return this.http.get<Turno>('http://srv855052.hstgr.cloud:8080/api/turnos/proximo', { observe: 'response' }).pipe(
+  return this.http.get<Turno>('http://mirsanlab.site:8080/api/turnos/proximo', { observe: 'response' }).pipe(
     map(response => response.status === 204 ? null : response.body),
     catchError(() => of(null))
   );
   }
 
   cancelarTurnoPaciente(id: number): Observable<void> {
-  return this.http.put<void>(`http://srv855052.hstgr.cloud:8080/api/turnos/${id}/cancelar-paciente`, {});
+  return this.http.put<void>(`http://mirsanlab.site:8080/api/turnos/${id}/cancelar-paciente`, {});
   }
 
 }
