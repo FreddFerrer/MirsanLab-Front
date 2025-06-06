@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://mirsanlab.site:8080/api'
+  apiUrl: 'http://mirsanlab.site:8080/api'
 };
