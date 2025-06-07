@@ -22,7 +22,7 @@ export interface TurnoPendiente {
   providedIn: 'root'
 })
 export class TurnoService {
-  private apiUrl = 'http://mirsanlab.site:8080/api/turnos';
+  private apiUrl = '/api/turnos';
 
   constructor(private http: HttpClient) {}
 
@@ -31,7 +31,7 @@ export class TurnoService {
   }
 
   reservarTurno(turno: { fecha: string; hora: string }) {
-  return this.http.post('http://mirsanlab.site:8080/api/turnos', turno, {
+  return this.http.post('/api/turnos', turno, {
     responseType: 'text'
   });
   }
@@ -51,14 +51,14 @@ export class TurnoService {
   }
 
   getProximoTurno(): Observable<Turno | null> {
-  return this.http.get<Turno>('http://mirsanlab.site:8080/api/turnos/proximo', { observe: 'response' }).pipe(
+  return this.http.get<Turno>('/api/turnos/proximo', { observe: 'response' }).pipe(
     map(response => response.status === 204 ? null : response.body),
     catchError(() => of(null))
   );
   }
 
   cancelarTurnoPaciente(id: number): Observable<void> {
-  return this.http.put<void>(`http://mirsanlab.site:8080/api/turnos/${id}/cancelar-paciente`, {});
+  return this.http.put<void>(`/api/turnos/${id}/cancelar-paciente`, {});
   }
 
 }
