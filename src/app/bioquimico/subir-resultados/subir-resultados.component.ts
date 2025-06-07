@@ -27,7 +27,7 @@ export class SubirResultadosComponent implements OnInit {
       debounceTime(300),
       switchMap((value: string) => {
         const params = new HttpParams().set('query', value);
-        return this.http.get<any[]>('/api/usuarios/buscar', { params });
+        return this.http.get<any[]>('http://mirsanlab.site:8080/usuarios/buscar', { params });
       })
     )
     .subscribe((resultados) => {
@@ -65,7 +65,7 @@ export class SubirResultadosComponent implements OnInit {
   formData.append('pacienteId', this.pacienteSeleccionado.id.toString());
   formData.append('archivo', this.archivoSeleccionado);
 
-  this.http.post('/api/resultados', formData).subscribe({
+  this.http.post('http://mirsanlab.site:8080/resultados', formData).subscribe({
     next: () => {
       this.successMsg = 'Resultado subido correctamente.';
       this.errorMsg = null;

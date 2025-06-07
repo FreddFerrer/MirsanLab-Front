@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ResultadoService {
-  private apiUrl = '/api/resultados';
+  private apiUrl = 'http://mirsanlab.site:8080/resultados';
 
   constructor(private http: HttpClient) {}
 
@@ -26,7 +26,7 @@ export class ResultadoService {
   }
 
   abrirResultado(id: number): void {
-    const url = `/api/resultados/${id}/descargar`;
+    const url = `http://mirsanlab.site:8080/resultados/${id}/descargar`;
     window.open(url, '_blank');
   }
 
