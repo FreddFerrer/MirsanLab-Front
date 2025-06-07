@@ -6,11 +6,6 @@
 /out-tsc
 /bazel-out
 
-node_modules
-dist
-.dockerignore
-Dockerfile
-
 # Node
 /node_modules
 npm-debug.log
