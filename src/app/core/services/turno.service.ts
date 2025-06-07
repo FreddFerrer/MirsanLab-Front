@@ -22,7 +22,7 @@ export interface TurnoPendiente {
   providedIn: 'root'
 })
 export class TurnoService {
-  private apiUrl = 'http://mirsanlab.site:8080/turnos';
+  private apiUrl = 'https://mirsanlab.site/api/turnos';
 
   constructor(private http: HttpClient) {}
 
@@ -31,7 +31,7 @@ export class TurnoService {
   }
 
   reservarTurno(turno: { fecha: string; hora: string }) {
-  return this.http.post('http://mirsanlab.site:8080/turnos', turno, {
+  return this.http.post('https://mirsanlab.site/api/turnos', turno, {
     responseType: 'text'
   });
   }
@@ -40,25 +40,25 @@ export class TurnoService {
   return this.http.get<TurnoPendiente[]>(`${this.apiUrl}/pendientes`);
   }
 
-  // PUT http://mirsanlab.site:8080/turnos/{id}/realizar
+  // PUT https://mirsanlab.site/api/turnos/{id}/realizar
   marcarComoRealizado(id: number): Observable<void> {
   return this.http.put<void>(`${this.apiUrl}/${id}/realizar`, {});
   }
 
-  // PUT http://mirsanlab.site:8080/turnos/{id}/cancelar
+  // PUT https://mirsanlab.site/api/turnos/{id}/cancelar
   cancelarTurno(id: number): Observable<void> {
   return this.http.put<void>(`${this.apiUrl}/${id}/cancelar`, {});
   }
 
   getProximoTurno(): Observable<Turno | null> {
-  return this.http.get<Turno>('http://mirsanlab.site:8080/turnos/proximo', { observe: 'response' }).pipe(
+  return this.http.get<Turno>('https://mirsanlab.site/api/turnos/proximo', { observe: 'response' }).pipe(
     map(response => response.status === 204 ? null : response.body),
     catchError(() => of(null))
   );
   }
 
   cancelarTurnoPaciente(id: number): Observable<void> {
-  return this.http.put<void>(`http://mirsanlab.site:8080/turnos/${id}/cancelar-paciente`, {});
+  return this.http.put<void>(`https://mirsanlab.site/api/turnos/${id}/cancelar-paciente`, {});
   }
 
 }
