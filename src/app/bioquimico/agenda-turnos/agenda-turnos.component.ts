@@ -4,6 +4,7 @@ import { TurnoService, TurnoPendiente } from 'src/app/core/services/turno.servic
 @Component({
   selector: 'app-agenda-turnos',
   templateUrl: './agenda-turnos.component.html',
+  styleUrls: ['./agenda-turnos.component.css']
 })
 export class AgendaTurnosComponent implements OnInit {
   turnos: TurnoPendiente[] = [];
@@ -64,5 +65,13 @@ export class AgendaTurnosComponent implements OnInit {
       this.successMsg = '';
       this.errorMsg = '';
     }, 3000);
+  }
+
+  getNombrePaciente(turno: TurnoPendiente): string {
+    return turno.nombrePaciente?.trim() || 'Paciente sin nombre registrado';
+  }
+
+  getContacto(turno: TurnoPendiente): string {
+    return turno.emailPaciente?.trim() || 'Sin email registrado';
   }
 }

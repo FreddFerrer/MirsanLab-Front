@@ -1,33 +1,64 @@
 <app-navbar></app-navbar>
 
-<section class="px-6 py-10 max-w-4xl mx-auto">
-  <h1 class="text-4xl font-bold mb-6 text-[#444747]">Historial de Resultados</h1>
-
-  <div *ngIf="cargando" class="text-base text-gray-500">Cargando resultados...</div>
-
-  <div *ngIf="!cargando && resultados.length === 0" class="text-base text-gray-500">
-    No se encontraron resultados.
-  </div>
-
-  <div *ngIf="!cargando && resultados.length > 0" class="space-y-4">
-    <div
-      *ngFor="let r of resultados"
-      class="flex items-center justify-between border rounded-md px-4 py-3 bg-white hover:shadow transition"
-      >
-    <div>
-      <p class="text-base font-semibold">Resultado #{{ r.id }}</p>
-      <p class="text-sm text-gray-500">
-      Subido el: {{ r.creadoEn | date: 'short' }}
+<main class="results-shell">
+  <section class="results-hero">
+    <div class="hero-copy">
+      <p class="hero-kicker">Portal de Pacientes</p>
+      <h1>Historial de resultados</h1>
+      <p>
+        Consulta tus estudios en una vista clara, accede a cada informe y descarga
+        tus PDFs cuando lo necesites.
       </p>
+      <div class="hero-tags">
+        <span class="hero-tag">Historial seguro</span>
+        <span class="hero-tag hero-tag-soft">Actualizacion en linea</span>
+      </div>
     </div>
-  
-  <!-- Botón para ver el PDF en una pestaña nueva -->
-    <button
-      (click)="verResultado(r.id)"
-      class="bg-[#9DEFB5] text-black text-sm font-medium px-3 py-2 rounded-md hover:bg-[#8fe0a9] transition"
-    >
-      Ver PDF
-    </button>
+    <aside class="hero-stats">
+      <article class="stat-item">
+        <span>Resultados totales</span>
+        <strong>{{ resultados.length }}</strong>
+      </article>
+      <article class="stat-item">
+        <span>Estado</span>
+        <strong>{{ cargando ? 'Sincronizando' : 'Actualizado' }}</strong>
+      </article>
+    </aside>
+  </section>
+
+  <section class="results-panel">
+    <header class="panel-header">
+      <h2>Resultados disponibles</h2>
+      <p>Revisa tus analisis y abre cada documento en un click.</p>
+    </header>
+
+    <div *ngIf="cargando" class="state-box">
+      <i class="fas fa-circle-notch fa-spin"></i>
+      <p>Cargando resultados...</p>
     </div>
-  </div>
-</section>
+
+    <div *ngIf="!cargando && resultados.length === 0" class="state-box state-empty">
+      <i class="fas fa-folder-open"></i>
+      <p>Aun no se encontraron resultados cargados.</p>
+    </div>
+
+    <div *ngIf="!cargando && resultados.length > 0" class="results-list">
+      <article *ngFor="let r of resultados" class="result-card">
+        <div class="result-main">
+          <div class="result-icon">
+            <i class="fas fa-file-medical"></i>
+          </div>
+          <div>
+            <p class="result-title">Resultado #{{ r.id }}</p>
+            <p class="result-date">Subido el {{ r.creadoEn | date: 'dd/MM/yyyy, HH:mm' }}</p>
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <button (click)="verResultado(r.id)" class="btn btn-primary">Ver PDF</button>
+          <button (click)="descargar(r.id)" class="btn btn-secondary">Descargar</button>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>

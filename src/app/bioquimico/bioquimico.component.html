@@ -1,40 +1,104 @@
 <app-navbar></app-navbar>
-<app-welcome-section [nombre]="nombreUsuario" [rol]="rolUsuario"></app-welcome-section>
 
-<section class="px-6 flex flex-col md:flex-row gap-6">
-  <!-- Card 1: Turnos Programados -->
-  <div class="flex-1 border border-[#e5e5e5] rounded-md p-6 transition duration-300 hover:shadow-lg hover:-translate-y-1 bg-white">
-    <h2 class="text-lg font-semibold mb-1">Turnos Semanales</h2>
-    <p class="text-sm text-[#6b7280] mb-4">Gestione sus turnos programados para la semana</p>
-    <div class="flex items-start space-x-3 mb-6">
-      <i class="fas fa-calendar-week text-[#9DEFB5] text-2xl mt-1"></i>
-      <div>
-        <p class="text-sm font-semibold">{{ turnosSemana.length }} turnos programados</p>
-        <p class="text-xs text-[#6b7280]">Semana del {{ fechaInicioSemana }} al {{ fechaFinSemana }}</p>
+<main class="dashboard-shell">
+  <section class="dashboard-hero">
+    <div class="hero-copy">
+      <p class="hero-kicker">Panel de Administracion</p>
+      <h1>Hola, {{ nombreUsuario || 'Equipo' }}</h1>
+      <p>
+        Controla turnos, revisa la carga de la semana y publica resultados de forma
+        rapida para mantener el flujo del laboratorio.
+      </p>
+
+      <div class="hero-tags">
+        <span class="hero-tag">Rol: {{ rolUsuario || 'ADMIN' }}</span>
+        <span class="hero-tag hero-tag-soft">
+          Semana activa: {{ fechaInicioSemana }} al {{ fechaFinSemana }}
+        </span>
       </div>
     </div>
-    <button
-      (click)="verTurnos()"
-      class="w-full bg-[#9DEFB5] text-sm font-semibold py-2 rounded-md hover:bg-[#8fe0a9] transition duration-300">
-      Ver Turnos
-    </button>
-  </div>
 
-  <!-- Card 2: Subir Resultados -->
-  <div class="flex-1 border border-[#e5e5e5] rounded-md p-6 transition duration-300 hover:shadow-lg hover:-translate-y-1 bg-white">
-    <h2 class="text-lg font-semibold mb-1">Subir Resultado</h2>
-    <p class="text-sm text-[#6b7280] mb-4">Adjunte resultados de laboratorio a un paciente</p>
-    <div class="flex items-start space-x-3 mb-6">
-      <i class="fas fa-upload text-[#9DEFB5] text-2xl mt-1"></i>
-      <div>
-        <p class="text-sm font-semibold">Formulario disponible</p>
-        <p class="text-xs text-[#6b7280]">Ingrese nombre del paciente y el archivo PDF.</p>
+    <aside class="hero-metrics">
+      <article class="metric-item">
+        <span>Turnos semanales</span>
+        <strong>{{ turnosSemana.length }}</strong>
+      </article>
+      <article class="metric-item">
+        <span>Carga promedio</span>
+        <strong>{{ (turnosSemana.length / 5) | number: '1.0-0' }} por dia</strong>
+      </article>
+    </aside>
+  </section>
+
+  <section class="dashboard-grid">
+    <article class="action-card">
+      <div class="card-header">
+        <h2>Turnos semanales</h2>
+        <i class="fas fa-calendar-week card-icon"></i>
       </div>
+
+      <p class="card-description">
+        Revisa la agenda de pacientes pendientes y accede al tablero completo de turnos.
+      </p>
+
+      <div class="card-detail">
+        <p>{{ turnosSemana.length }} turnos programados</p>
+        <small>Rango: {{ fechaInicioSemana }} a {{ fechaFinSemana }}</small>
+      </div>
+
+      <button (click)="verTurnos()" class="btn btn-primary">Ver turnos</button>
+    </article>
+
+    <article class="action-card">
+      <div class="card-header">
+        <h2>Subir resultados</h2>
+        <i class="fas fa-upload card-icon"></i>
+      </div>
+
+      <p class="card-description">
+        Carga informes en PDF para que cada paciente vea sus resultados al instante.
+      </p>
+
+      <div class="card-detail">
+        <p>Carga habilitada</p>
+        <small>Asocia cada archivo con nombre y datos del paciente.</small>
+      </div>
+
+      <button (click)="irASubirResultados()" class="btn btn-primary">Subir resultado</button>
+    </article>
+
+    <article class="info-card">
+      <h2>Resumen rapido</h2>
+
+      <div class="info-row">
+        <span>Estado operativo</span>
+        <strong>{{ turnosSemana.length > 0 ? 'Agenda activa' : 'Sin turnos hoy' }}</strong>
+      </div>
+      <div class="info-row">
+        <span>Foco sugerido</span>
+        <strong>{{ turnosSemana.length > 8 ? 'Priorizar carga de resultados' : 'Revisar nuevos turnos' }}</strong>
+      </div>
+      <div class="info-row">
+        <span>Siguiente paso</span>
+        <strong>Validar agenda y tiempos de respuesta</strong>
+      </div>
+
+      <button (click)="verTurnos()" class="btn btn-secondary">Ir a agenda</button>
+    </article>
+  </section>
+
+  <section class="preview-card" *ngIf="turnosSemana.length > 0">
+    <div class="preview-header">
+      <h2>Vista rapida de turnos</h2>
+      <button (click)="verTurnos()" class="text-link">Ver lista completa</button>
     </div>
-    <button
-      (click)="irASubirResultados()"
-      class="w-full bg-[#9DEFB5] text-sm font-semibold py-2 rounded-md hover:bg-[#8fe0a9] transition duration-300">
-      Subir Resultado
-    </button>
-  </div>
-</section>
+
+    <div class="preview-list">
+      <article class="preview-item" *ngFor="let turno of turnosSemana | slice: 0 : 4">
+        <p>{{ turno.nombrePaciente }}</p>
+        <small>{{ turno.fecha | date: 'dd/MM/yyyy' }} - {{ turno.hora | slice: 0 : 5 }} hs</small>
+        <span>{{ turno.estado }}</span>
+      </article>
+    </div>
+  </section>
+</main>

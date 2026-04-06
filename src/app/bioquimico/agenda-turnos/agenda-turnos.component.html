@@ -1,49 +1,70 @@
 <app-navbar></app-navbar>
 
-<section class="px-6 py-8 max-w-6xl mx-auto">
-  <h1 class="text-3xl font-bold mb-6 text-[#444747]">Turnos Pendientes</h1>
-
-  <!-- Mensajes -->
-  <div *ngIf="successMsg" class="bg-green-100 text-green-800 px-4 py-2 rounded mb-4">
-    {{ successMsg }}
-  </div>
-  <div *ngIf="errorMsg" class="bg-red-100 text-red-800 px-4 py-2 rounded mb-4">
-    {{ errorMsg }}
-  </div>
-
-  <div *ngIf="cargando" class="text-gray-500 text-base">Cargando turnos...</div>
-  <div *ngIf="error" class="text-red-600 text-base">{{ error }}</div>
-
-  <div *ngIf="!cargando && turnos.length === 0" class="text-gray-500 text-base">
-    No hay turnos pendientes asignados.
-  </div>
-
-  <div *ngIf="!cargando && turnos.length > 0" class="space-y-4">
-    <div
-      *ngFor="let turno of turnos"
-      class="border border-gray-200 rounded-md bg-white p-4 flex justify-between items-center shadow-sm hover:shadow-md transition"
-    >
-      <div>
-        <p class="text-lg font-semibold">Paciente: {{ turno.nombrePaciente }}</p>
-        <p class="text-sm text-gray-600">Fecha: {{ turno.fecha }} - Hora: {{ turno.hora }}</p>
-        <p class="text-sm text-gray-500">
-          Email: {{ turno.emailPaciente }} | Teléfono: {{ turno.telefonoPaciente }}
-        </p>
-      </div>
-      <div class="flex gap-2">
-        <button
-          (click)="marcarRealizado(turno.id)"
-          class="bg-green-100 text-green-800 px-3 py-1 text-sm rounded hover:bg-green-200 transition"
-        >
-          Realizado
-        </button>
-        <button
-          (click)="cancelarTurno(turno.id)"
-          class="bg-red-100 text-red-800 px-3 py-1 text-sm rounded hover:bg-red-200 transition"
-        >
-          Cancelar
-        </button>
-      </div>
+<main class="turnos-admin-shell">
+  <section class="turnos-admin-hero">
+    <div>
+      <p class="hero-kicker">Panel Admin</p>
+      <h1>Turnos pendientes</h1>
+      <p>
+        Administra la agenda diaria, marca turnos realizados y cancela cuando sea
+        necesario.
+      </p>
     </div>
-  </div>
-</section>
+    <aside class="hero-stats">
+      <article class="stat-item">
+        <span>Pendientes</span>
+        <strong>{{ turnos.length }}</strong>
+      </article>
+      <article class="stat-item">
+        <span>Estado de sincronizacion</span>
+        <strong>{{ cargando ? 'Cargando' : 'Actualizado' }}</strong>
+      </article>
+    </aside>
+  </section>
+
+  <section class="turnos-panel">
+    <header class="panel-header">
+      <h2>Agenda activa</h2>
+      <p>Gestiona los turnos desde esta vista centralizada.</p>
+    </header>
+
+    <p *ngIf="successMsg" class="alert alert-success">{{ successMsg }}</p>
+    <p *ngIf="errorMsg" class="alert alert-error">{{ errorMsg }}</p>
+    <p *ngIf="error" class="alert alert-error">{{ error }}</p>
+
+    <div *ngIf="cargando" class="state-box">
+      <i class="fas fa-circle-notch fa-spin"></i>
+      <p>Cargando turnos...</p>
+    </div>
+
+    <div *ngIf="!cargando && turnos.length === 0" class="state-box state-empty">
+      <i class="fas fa-calendar-check"></i>
+      <p>No hay turnos pendientes asignados.</p>
+    </div>
+
+    <div *ngIf="!cargando && turnos.length > 0" class="turnos-list">
+      <article *ngFor="let turno of turnos" class="turno-card">
+        <div class="turno-main">
+          <div class="turno-icon">
+            <i class="fas fa-user-clock"></i>
+          </div>
+          <div>
+            <p class="turno-title">{{ getNombrePaciente(turno) }}</p>
+            <p class="turno-meta">
+              {{ turno.fecha | date: 'dd/MM/yyyy' }} - {{ turno.hora | slice: 0 : 5 }} hs
+            </p>
+            <p class="turno-contacto">Contacto: {{ getContacto(turno) }}</p>
+            <p class="turno-contacto" *ngIf="turno.telefonoPaciente">
+              Telefono: {{ turno.telefonoPaciente }}
+            </p>
+          </div>
+        </div>
+
+        <div class="turno-actions">
+          <button (click)="marcarRealizado(turno.id)" class="btn btn-ok">Realizado</button>
+          <button (click)="cancelarTurno(turno.id)" class="btn btn-cancel">Cancelar</button>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>

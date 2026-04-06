@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 import { Turno } from 'src/app/shared/models/turno-disponible.model';
+import { environment } from 'src/environment/environment';
 
 export interface TurnoDisponible {
   fecha: string;
@@ -22,7 +23,7 @@ export interface TurnoPendiente {
   providedIn: 'root'
 })
 export class TurnoService {
-  private apiUrl = 'https://mirsanlab.site/api/turnos';
+  private apiUrl = `${environment.apiUrl}/turnos`;
 
   constructor(private http: HttpClient) {}
 
@@ -31,7 +32,7 @@ export class TurnoService {
   }
 
   reservarTurno(turno: { fecha: string; hora: string }) {
-  return this.http.post('https://mirsanlab.site/api/turnos', turno, {
+  return this.http.post(this.apiUrl, turno, {
     responseType: 'text'
   });
   }
@@ -51,14 +52,14 @@ export class TurnoService {
   }
 
   getProximoTurno(): Observable<Turno | null> {
-  return this.http.get<Turno>('https://mirsanlab.site/api/turnos/proximo', { observe: 'response' }).pipe(
+  return this.http.get<Turno>(`${this.apiUrl}/proximo`, { observe: 'response' }).pipe(
     map(response => response.status === 204 ? null : response.body),
     catchError(() => of(null))
   );
   }
 
   cancelarTurnoPaciente(id: number): Observable<void> {
-  return this.http.put<void>(`https://mirsanlab.site/api/turnos/${id}/cancelar-paciente`, {});
+  return this.http.put<void>(`${this.apiUrl}/${id}/cancelar-paciente`, {});
   }
 
 }

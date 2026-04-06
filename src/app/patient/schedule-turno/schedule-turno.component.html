@@ -1,65 +1,94 @@
 <app-navbar></app-navbar>
 
-<section class="px-6 py-10 max-w-4xl mx-auto">
-  <h1 class="text-4xl font-bold mb-6 text-[#444747]">Reservar un Turno</h1>
+<main class="turnos-shell">
+  <section class="turnos-hero">
+    <div>
+      <p class="hero-kicker">Agenda de Turnos</p>
+      <h1>Reserva tu proxima visita</h1>
+      <p>
+        Selecciona fecha y horario disponible para confirmar tu turno de manera
+        rapida y segura.
+      </p>
+    </div>
+    <div class="hero-tip">
+      <i class="fas fa-clock"></i>
+      <p>Agenda habilitada para los proximos 15 dias habiles.</p>
+    </div>
+  </section>
 
-  <p class="text-base text-gray-700 mb-6">
-    Podés sacar turnos para los próximos <strong>15 días hábiles</strong> (lunes a viernes). Los sábados y domingos el laboratorio no atiende.
-  </p>
+  <div class="booking-layout">
+    <section class="booking-main">
+      <article class="booking-card">
+        <header class="booking-header">
+          <h2>1. Elegi una fecha</h2>
+          <p>Solo se muestran dias con disponibilidad.</p>
+        </header>
 
-  <!-- ✅ Mensajes -->
-  <div *ngIf="successMsg" class="bg-green-100 text-green-800 px-4 py-2 rounded mb-4">
-    {{ successMsg }}
-  </div>
-  <div *ngIf="errorMsg" class="bg-red-100 text-red-800 px-4 py-2 rounded mb-4">
-    {{ errorMsg }}
-  </div>
+        <div class="date-grid" *ngIf="turnos.length > 0; else sinTurnos">
+          <button
+            *ngFor="let turno of turnos"
+            (click)="seleccionarFecha(turno.fecha)"
+            [ngClass]="{ 'is-selected': fechaSeleccionada === turno.fecha }"
+            class="date-chip"
+          >
+            <span>{{ turno.fecha | date: 'EEE' }}</span>
+            <strong>{{ turno.fecha | date: 'd/M' }}</strong>
+          </button>
+        </div>
+      </article>
 
-  <!-- Fechas disponibles -->
-  <div class="mb-8">
-    <h2 class="text-2xl font-semibold mb-3 text-[#444747]">Fechas disponibles</h2>
-    <div class="flex flex-wrap gap-4">
+      <article class="booking-card" *ngIf="fechaSeleccionada">
+        <header class="booking-header">
+          <h2>2. Elegi un horario</h2>
+          <p>Fecha seleccionada: {{ fechaSeleccionada | date: 'dd/MM/yyyy' }}</p>
+        </header>
+
+        <div class="time-grid">
+          <button
+            *ngFor="let hora of obtenerHorariosSeleccionados()"
+            (click)="seleccionarHorario(hora)"
+            [ngClass]="{ 'is-selected': horarioSeleccionado === hora }"
+            class="time-chip"
+          >
+            {{ hora | slice: 0 : 5 }}
+          </button>
+        </div>
+      </article>
+
+      <ng-template #sinTurnos>
+        <div class="empty-state">
+          <i class="fas fa-calendar-times"></i>
+          <p>No hay fechas disponibles por el momento.</p>
+        </div>
+      </ng-template>
+    </section>
+
+    <aside class="booking-summary">
+      <h2>Resumen de reserva</h2>
+
+      <div class="summary-item">
+        <span>Fecha</span>
+        <strong>{{ fechaSeleccionada ? (fechaSeleccionada | date: 'dd/MM/yyyy') : 'Sin seleccionar' }}</strong>
+      </div>
+      <div class="summary-item">
+        <span>Horario</span>
+        <strong>{{ horarioSeleccionado ? (horarioSeleccionado | slice: 0 : 5) + ' hs' : 'Sin seleccionar' }}</strong>
+      </div>
+
+      <p *ngIf="successMsg" class="alert alert-success">{{ successMsg }}</p>
+      <p *ngIf="errorMsg" class="alert alert-error">{{ errorMsg }}</p>
+
       <button
-        *ngFor="let turno of turnos"
-        (click)="seleccionarFecha(turno.fecha)"
-        [class.bg-[#9DEFB5]]="fechaSeleccionada === turno.fecha"
-        [class.text-white]="fechaSeleccionada === turno.fecha"
-        class="px-5 py-3 border rounded-md text-base hover:bg-[#8fe0a9] transition duration-300"
+        (click)="confirmarTurno()"
+        [disabled]="!fechaSeleccionada || !horarioSeleccionado"
+        class="confirm-btn"
       >
-        {{ turno.fecha | date:'EEEE d/M' }}
+        Confirmar turno
       </button>
-    </div>
+
+      <p class="summary-note">
+        Recibiras la confirmacion automaticamente al finalizar la reserva.
+      </p>
+    </aside>
   </div>
-
-  <!-- Horarios disponibles -->
-  <div *ngIf="fechaSeleccionada" class="mb-10">
-    <h2 class="text-2xl font-semibold mb-3 text-[#444747]">Horarios para {{ fechaSeleccionada | date:'EEEE d/M' }}</h2>
-
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-      <button
-        *ngFor="let hora of obtenerHorariosSeleccionados()"
-        (click)="seleccionarHorario(hora)"
-        [class.bg-[#9DEFB5]]="horarioSeleccionado === hora"
-        [class.text-white]="horarioSeleccionado === hora"
-        class="px-4 py-2 border rounded-md text-base hover:bg-[#8fe0a9] transition duration-300"
-      >
-        {{ hora }}
-      </button>
-    </div>
-  </div>
-
-  <!-- Confirmar -->
-  <div class="mt-10">
-    <button
-      (click)="confirmarTurno()"
-      [disabled]="!fechaSeleccionada || !horarioSeleccionado"
-      class="w-full md:w-auto px-8 py-4 bg-[#9DEFB5] text-black text-lg font-semibold rounded-md hover:bg-[#8fe0a9] transition disabled:opacity-50 disabled:cursor-not-allowed"
-    >
-      Confirmar Turno
-    </button>
-
-    <div *ngIf="!fechaSeleccionada || !horarioSeleccionado" class="text-base text-gray-600 mt-3">
-      Seleccioná una fecha y horario para continuar.
-    </div>
-  </div>
-</section>
+</main>

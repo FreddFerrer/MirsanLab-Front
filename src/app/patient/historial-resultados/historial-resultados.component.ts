@@ -5,6 +5,7 @@ import { Resultado } from 'src/app/shared/models/resultado.model';
 @Component({
   selector: 'app-historial-resultados',
   templateUrl: './historial-resultados.component.html',
+  styleUrls: ['./historial-resultados.component.css']
 })
 export class HistorialResultadosComponent implements OnInit {
   resultados: Resultado[] = [];

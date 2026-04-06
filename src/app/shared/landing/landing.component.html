@@ -1,179 +1,407 @@
-<div class="min-h-screen bg-gradient-to-b from-[#aaf9c3] via-white to-[#f0fdfa] text-[17px]">
-  <header class="bg-white shadow-sm sticky top-0 z-50">
-    <nav class="flex items-center justify-between px-6 py-4">
-      <div class="flex items-center gap-2">
-        <img src="assets/img/MirsanLogo.png" alt="Mirsan Lab. Logo" class="h-8" />
-        <span class="text-2xl font-bold text-[#444747]">Mirsan Lab.</span>
+<div class="relative min-h-screen overflow-hidden bg-[#f8fffb] text-[17px] text-[#444747]">
+  <div class="pointer-events-none absolute inset-0">
+    <div class="absolute -top-28 -left-20 h-80 w-80 rounded-full bg-[#aaf9c3]/35 blur-3xl"></div>
+    <div class="absolute top-40 -right-20 h-72 w-72 rounded-full bg-[#9DEFB5]/35 blur-3xl"></div>
+    <div class="absolute bottom-32 left-1/3 h-64 w-64 rounded-full bg-[#f0fdfa] blur-3xl"></div>
+  </div>
+
+  <header class="sticky top-0 z-50 border-b border-[#aaf9c3]/40 bg-[#ffffff]/90 backdrop-blur">
+    <nav class="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 md:px-8">
+      <a href="#inicio" class="flex items-center gap-2">
+        <img src="assets/img/MirsanLogo.png" alt="Logo Mirsan Lab" class="h-9 w-auto" />
+        <span class="text-xl font-bold tracking-tight text-[#263138]">MirSanLab</span>
+      </a>
+
+      <div class="hidden items-center gap-7 text-sm font-semibold md:flex">
+        <a href="#inicio" class="text-[#444747] transition hover:text-[#8fe0a9]">Inicio</a>
+        <a href="#servicios" class="text-[#444747] transition hover:text-[#8fe0a9]">Servicios</a>
+        <a href="#tecnologia" class="text-[#444747] transition hover:text-[#8fe0a9]">Tecnologia</a>
+        <a href="#galeria" class="text-[#444747] transition hover:text-[#8fe0a9]">Galeria</a>
+        <a href="#ubicacion" class="text-[#444747] transition hover:text-[#8fe0a9]">Ubicacion</a>
       </div>
-      <div class="hidden md:flex gap-6 text-lg font-medium">
-        <a href="#header" class="text-[#444747] hover:text-[#8fe0a9] transition">Home</a>
-        <a href="#nosotros" class="text-[#444747] hover:text-[#8fe0a9] transition">Nosotros</a>
-        <a routerLink="/login" class="text-[#444747] hover:text-[#8fe0a9] transition">Login</a>
-      </div>
+
+      <a
+        routerLink="/login"
+        class="inline-flex items-center gap-2 rounded-full border border-[#9DEFB5] bg-[#aaf9c3] px-4 py-2 text-sm font-semibold text-[#000000] shadow-sm transition hover:-translate-y-0.5 hover:bg-[#8fe0a9] hover:shadow"
+      >
+        Ingresar
+        <i class="fas fa-arrow-right text-xs"></i>
+      </a>
     </nav>
   </header>
 
-  <section class="flex flex-col lg:flex-row h-[500px]">
-    <div class="flex-1 flex items-center justify-center px-6">
-      <div class="max-w-xl space-y-6 text-center lg:text-left">
-        <h1 class="text-4xl font-bold text-[#444747]">Tu laboratorio de confianza</h1>
-        <p class="text-lg text-[#6b7280]">
-          Nos especializamos en pruebas y análisis de alta precisión, con atención personalizada para cada paciente.
-        </p>
-        <div class="mt-4">
+  <main class="relative">
+    <section id="inicio" class="mx-auto grid w-full max-w-6xl items-center gap-12 px-5 pb-20 pt-12 md:px-8 lg:grid-cols-2 lg:pt-16">
+      <div class="space-y-7 reveal-up">
+        <span class="inline-flex items-center gap-2 rounded-full border border-[#9DEFB5] bg-[#ffffff] px-4 py-1.5 text-sm font-semibold text-[#444747] shadow-sm">
+          <i class="fas fa-flask text-[#8fe0a9]"></i>
+          Laboratorio de analisis clinicos
+        </span>
+
+        <div class="space-y-4">
+          <h1 class="max-w-2xl text-4xl font-bold leading-tight text-[#263138] md:text-6xl">
+            Precision clinica y atencion humana para cada paciente
+          </h1>
+          <p class="max-w-xl text-lg leading-relaxed text-[#6b7280]">
+            Estudios confiables, tecnologia moderna y un portal digital simple para gestionar turnos y consultar resultados en minutos.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3 sm:flex-row">
           <a
             routerLink="/login"
-            class="inline-block px-6 py-3 bg-[#aaf9c3] text-black text-base font-semibold rounded hover:bg-[#8fe0a9] transition"
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#263138] px-6 py-3 text-base font-semibold text-[#ffffff] shadow-sm transition hover:-translate-y-0.5 hover:bg-[#444747]"
           >
-            Ingresar
+            Ingresar al portal
+            <i class="fas fa-user-circle text-sm"></i>
+          </a>
+          <a
+            href="#servicios"
+            class="inline-flex items-center justify-center gap-2 rounded-xl border border-[#9DEFB5] bg-[#ffffff] px-6 py-3 text-base font-semibold text-[#444747] transition hover:border-[#8fe0a9] hover:text-[#263138]"
+          >
+            Ver servicios
+            <i class="fas fa-chevron-down text-xs"></i>
+          </a>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-3">
+          <article class="rounded-2xl border border-[#aaf9c3]/60 bg-[#ffffff] p-4 shadow-sm">
+            <p class="text-2xl font-bold text-[#263138]">24h</p>
+            <p class="text-sm text-[#6b7280]">Entrega promedio de resultados</p>
+          </article>
+          <article class="rounded-2xl border border-[#aaf9c3]/60 bg-[#ffffff] p-4 shadow-sm">
+            <p class="text-2xl font-bold text-[#263138]">15 dias</p>
+            <p class="text-sm text-[#6b7280]">Agenda de turnos habilitada</p>
+          </article>
+          <article class="rounded-2xl border border-[#aaf9c3]/60 bg-[#ffffff] p-4 shadow-sm">
+            <p class="text-2xl font-bold text-[#263138]">100%</p>
+            <p class="text-sm text-[#6b7280]">Foco en calidad y cercania</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="relative reveal-up lg:pl-8">
+        <div class="overflow-hidden rounded-[2rem] border border-[#aaf9c3]/60 bg-[#ffffff] p-3 shadow-xl">
+          <div class="overflow-hidden rounded-[1.5rem]">
+            <img
+              src="assets/img/analisis-fondo.jpg"
+              alt="Analisis clinico en laboratorio"
+              class="h-[360px] w-full object-cover md:h-[470px]"
+            />
+          </div>
+        </div>
+
+        <article class="float-soft absolute -left-2 top-8 rounded-2xl border border-[#aaf9c3]/50 bg-[#ffffff]/95 px-4 py-3 shadow-lg md:-left-10">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-[#aaf9c3] text-[#263138]">
+              <i class="fas fa-vial"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-[#263138]">Control de calidad continuo</p>
+              <p class="text-xs text-[#6b7280]">Procesos claros y trazables</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="float-soft-delayed absolute -bottom-6 right-2 rounded-2xl border border-[#9DEFB5]/60 bg-[#ffffff]/95 px-4 py-3 shadow-lg md:right-6">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-[#263138] text-[#9DEFB5]">
+              <i class="fas fa-file-medical"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-[#263138]">Resultados en linea</p>
+              <p class="text-xs text-[#6b7280]">Acceso seguro en cualquier momento</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="servicios" class="mx-auto w-full max-w-6xl px-5 py-16 md:px-8">
+      <div class="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div class="max-w-2xl space-y-3">
+          <p class="text-sm font-bold uppercase tracking-[0.2em] text-[#8fe0a9]">Servicios</p>
+          <h2 class="text-3xl font-bold text-[#263138] md:text-4xl">Soluciones de laboratorio para diagnosticos confiables</h2>
+          <p class="text-lg text-[#6b7280]">
+            Combinamos equipamiento actualizado, tiempos claros y acompanamiento cercano en cada estudio.
+          </p>
+        </div>
+        <a href="#tecnologia" class="inline-flex items-center gap-2 text-sm font-semibold text-[#263138] transition hover:text-[#8fe0a9]">
+          Conocer nuestra tecnologia
+          <i class="fas fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+
+      <div class="grid gap-6 lg:grid-cols-3">
+        <article class="group relative overflow-hidden rounded-3xl border border-[#aaf9c3]/40 bg-[#ffffff] shadow-sm transition hover:-translate-y-1 hover:shadow-lg lg:col-span-2">
+          <img src="assets/img/servicio-1.jpg" alt="Tecnologia de laboratorio" class="h-72 w-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#263138]/90 via-[#263138]/35 to-[#263138]/0"></div>
+          <div class="absolute bottom-0 p-7 text-[#ffffff]">
+            <h3 class="text-3xl font-bold">Tecnologia de vanguardia</h3>
+            <p class="mt-2 max-w-xl text-base text-[#f0fdfa]">
+              Procesamiento automatizado para resultados de alta precision y reportes listos para compartir con tu medico.
+            </p>
+          </div>
+        </article>
+
+        <article class="rounded-3xl border border-[#aaf9c3]/40 bg-[#ffffff] p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+          <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-[#aaf9c3] text-[#263138]">
+            <i class="fas fa-user-nurse text-lg"></i>
+          </div>
+          <h3 class="mb-2 text-2xl font-bold text-[#263138]">Atencion personalizada</h3>
+          <p class="mb-6 text-base leading-relaxed text-[#6b7280]">
+            Orientacion clara desde la toma de muestra hasta la entrega, con acompanamiento profesional.
+          </p>
+          <a routerLink="/login" class="inline-flex items-center gap-2 text-sm font-semibold text-[#263138] transition hover:text-[#8fe0a9]">
+            Ir al portal
+            <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </article>
+      </div>
+
+      <div class="mt-6 grid gap-6 md:grid-cols-2">
+        <article class="rounded-3xl border border-[#aaf9c3]/40 bg-[#ffffff] p-6 shadow-sm">
+          <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-[#9DEFB5] text-[#263138]">
+            <i class="fas fa-file-medical"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-[#263138]">Resultados en linea</h3>
+          <p class="mt-2 text-base text-[#6b7280]">
+            Ingresa a tu cuenta para ver estudios recientes y descargar tus documentos PDF de forma segura.
+          </p>
+          <a
+            routerLink="/login"
+            class="mt-4 inline-flex items-center gap-2 rounded-lg bg-[#aaf9c3] px-4 py-2 text-sm font-semibold text-[#000000] transition hover:bg-[#8fe0a9]"
+          >
+            Ver resultados
+            <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </article>
+
+        <article class="rounded-3xl border border-[#aaf9c3]/40 bg-[#ffffff] p-6 shadow-sm">
+          <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-[#9DEFB5] text-[#263138]">
+            <i class="fas fa-calendar-check"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-[#263138]">Gestion de turnos</h3>
+          <p class="mt-2 text-base text-[#6b7280]">
+            Reserva de forma rapida y organiza tus visitas con disponibilidad visible y confirmacion inmediata.
+          </p>
+          <a
+            routerLink="/login"
+            class="mt-4 inline-flex items-center gap-2 rounded-lg bg-[#aaf9c3] px-4 py-2 text-sm font-semibold text-[#000000] transition hover:bg-[#8fe0a9]"
+          >
+            Agendar turno
+            <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section id="tecnologia" class="border-y border-[#aaf9c3]/40 bg-[#f0fdfa] py-16">
+      <div class="mx-auto grid w-full max-w-6xl gap-10 px-5 md:px-8 lg:grid-cols-2">
+        <div class="grid grid-cols-2 gap-4">
+          <article class="rounded-3xl border border-[#aaf9c3]/50 bg-[#ffffff] p-6 shadow-sm">
+            <p class="text-4xl font-bold text-[#263138]">99.9%</p>
+            <p class="mt-2 text-sm text-[#6b7280]">Precision diagnostica en primera prueba</p>
+          </article>
+          <article class="translate-y-6 rounded-3xl border border-[#aaf9c3]/50 bg-[#ffffff] p-6 shadow-sm">
+            <p class="text-4xl font-bold text-[#263138]">24h</p>
+            <p class="mt-2 text-sm text-[#6b7280]">Tiempo promedio de entrega</p>
+          </article>
+          <article class="rounded-3xl border border-[#aaf9c3]/50 bg-[#ffffff] p-6 shadow-sm">
+            <p class="text-4xl font-bold text-[#263138]">+15k</p>
+            <p class="mt-2 text-sm text-[#6b7280]">Pacientes atendidos</p>
+          </article>
+          <article class="translate-y-6 overflow-hidden rounded-3xl border border-[#aaf9c3]/50 bg-[#ffffff] p-2 shadow-sm">
+            <img src="assets/img/servicio-2.jpg" alt="Equipo de laboratorio" class="h-full w-full rounded-2xl object-cover" />
+          </article>
+        </div>
+
+        <div class="space-y-5">
+          <h2 class="text-3xl font-bold leading-tight text-[#263138] md:text-4xl">
+            Infraestructura tecnica al servicio de la confianza medica
+          </h2>
+          <p class="text-base leading-relaxed text-[#6b7280]">
+            Operamos con equipos automatizados y protocolos de control que reducen errores y aceleran tiempos de respuesta.
+          </p>
+
+          <div class="space-y-4">
+            <article class="flex gap-3 rounded-2xl border border-[#aaf9c3]/50 bg-[#ffffff] p-4">
+              <div class="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-[#f8fffb] text-[#8fe0a9]">
+                <i class="fas fa-shield-alt text-sm"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-[#263138]">Control de calidad externo</h3>
+                <p class="text-sm text-[#6b7280]">Validacion continua de procesos y trazabilidad en cada muestra.</p>
+              </div>
+            </article>
+            <article class="flex gap-3 rounded-2xl border border-[#aaf9c3]/50 bg-[#ffffff] p-4">
+              <div class="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-[#f8fffb] text-[#8fe0a9]">
+                <i class="fas fa-microchip text-sm"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-[#263138]">Procesamiento automatizado</h3>
+                <p class="text-sm text-[#6b7280]">Flujos optimizados desde la recepcion de muestras hasta el reporte final.</p>
+              </div>
+            </article>
+            <article class="flex gap-3 rounded-2xl border border-[#aaf9c3]/50 bg-[#ffffff] p-4">
+              <div class="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-[#f8fffb] text-[#8fe0a9]">
+                <i class="fas fa-lock text-sm"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-[#263138]">Proteccion de datos</h3>
+                <p class="text-sm text-[#6b7280]">Acceso seguro a resultados y resguardo de la informacion clinica.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeria" class="mx-auto w-full max-w-6xl px-5 py-16 md:px-8">
+      <div class="mb-10 text-center">
+        <h2 class="text-3xl font-bold text-[#263138] md:text-4xl">Nuestro espacio de trabajo</h2>
+        <p class="mx-auto mt-3 max-w-2xl text-lg text-[#6b7280]">
+          Un entorno limpio, equipado y preparado para brindar una experiencia segura y profesional.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <img src="assets/img/galeria-1.jpeg" alt="Galeria 1" class="h-48 w-full rounded-2xl object-cover shadow-sm md:h-56" />
+        <img src="assets/img/galeria-2.jpeg" alt="Galeria 2" class="h-48 w-full rounded-2xl object-cover shadow-sm md:h-56" />
+        <img src="assets/img/galeria-3.jpeg" alt="Galeria 3" class="h-48 w-full rounded-2xl object-cover shadow-sm md:h-56" />
+        <img src="assets/img/galeria-4.jpeg" alt="Galeria 4" class="h-48 w-full rounded-2xl object-cover shadow-sm md:h-56" />
+        <img src="assets/img/galeria-5.jpeg" alt="Galeria 5" class="h-48 w-full rounded-2xl object-cover shadow-sm md:h-56" />
+        <img src="assets/img/galeria-6.jpeg" alt="Galeria 6" class="h-48 w-full rounded-2xl object-cover shadow-sm md:h-56" />
+        <img src="assets/img/galeria-7.jpeg" alt="Galeria 7" class="h-48 w-full rounded-2xl object-cover shadow-sm md:h-56" />
+        <img src="assets/img/galeria-8.jpeg" alt="Galeria 8" class="h-48 w-full rounded-2xl object-cover shadow-sm md:h-56" />
+      </div>
+    </section>
+
+    <section id="ubicacion" class="bg-[#aaf9c3]/15 py-16">
+      <div class="mx-auto grid w-full max-w-6xl gap-8 px-5 md:px-8 lg:grid-cols-[1fr_1.5fr]">
+        <div class="space-y-4">
+          <h2 class="text-3xl font-bold text-[#263138]">Ubicacion</h2>
+          <p class="text-base leading-relaxed text-[#6b7280]">
+            Te esperamos en San Juan 335, Quitilipi, Chaco, Argentina.
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3 rounded-xl border border-[#9DEFB5]/60 bg-[#ffffff] p-3">
+              <i class="fas fa-map-marker-alt text-[#8fe0a9]"></i>
+              <span class="text-sm text-[#444747]">Atencion presencial con turnos programados</span>
+            </div>
+            <div class="flex items-center gap-3 rounded-xl border border-[#9DEFB5]/60 bg-[#ffffff] p-3">
+              <i class="fas fa-clock text-[#8fe0a9]"></i>
+              <span class="text-sm text-[#444747]">Resultados informados de forma clara y oportuna</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="overflow-hidden rounded-2xl border border-[#9DEFB5]/60 bg-[#ffffff] p-2 shadow-lg">
+          <div class="aspect-video overflow-hidden rounded-xl">
+            <iframe
+              class="h-full w-full"
+              style="border: 0"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3574.663543661198!2d-60.21660082463388!3d-26.865984476662525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94406e2e5b2ef909%3A0x3f5af8f404e85899!2sSan%20Juan%20335%2C%20Quitilipi%2C%20Chaco!5e0!3m2!1ses!2sar!4v1716831086427!5m2!1ses!2sar"
+              title="Ubicacion Mirsan Lab"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultados" class="mx-auto w-full max-w-6xl px-5 py-14 md:px-8">
+      <div class="overflow-hidden rounded-[2rem] bg-[#263138] p-8 text-[#ffffff] shadow-2xl md:p-12">
+        <div class="grid items-center gap-8 lg:grid-cols-[1.2fr_1fr]">
+          <div>
+            <p class="mb-2 text-sm font-bold uppercase tracking-[0.2em] text-[#9DEFB5]">Portal digital</p>
+            <h2 class="text-3xl font-bold leading-tight md:text-4xl">Tu historial de analisis, en un solo lugar</h2>
+            <p class="mt-3 max-w-2xl text-base text-[#f0fdfa]">
+              Accede a tus estudios, gestiona turnos y descarga resultados en un entorno claro, seguro y pensado para pacientes.
+            </p>
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+              <a
+                routerLink="/login"
+                class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#aaf9c3] px-6 py-3 text-base font-semibold text-[#000000] transition hover:bg-[#8fe0a9]"
+              >
+                Comenzar ahora
+                <i class="fas fa-arrow-right text-xs"></i>
+              </a>
+              <a
+                href="#servicios"
+                class="inline-flex items-center justify-center gap-2 rounded-xl border border-[#9DEFB5]/60 bg-[#263138] px-6 py-3 text-base font-semibold text-[#ffffff] transition hover:border-[#8fe0a9]"
+              >
+                Ver estudios
+                <i class="fas fa-chevron-right text-xs"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+            <article class="rounded-2xl border border-[#9DEFB5]/40 bg-[#ffffff]/10 p-4">
+              <p class="text-sm font-semibold text-[#9DEFB5]">Acceso 24/7</p>
+              <p class="mt-1 text-sm text-[#f0fdfa]">Consulta tus resultados cuando lo necesites.</p>
+            </article>
+            <article class="rounded-2xl border border-[#9DEFB5]/40 bg-[#ffffff]/10 p-4">
+              <p class="text-sm font-semibold text-[#9DEFB5]">Historial ordenado</p>
+              <p class="mt-1 text-sm text-[#f0fdfa]">Visualiza estudios previos en una vista simple.</p>
+            </article>
+            <article class="rounded-2xl border border-[#9DEFB5]/40 bg-[#ffffff]/10 p-4 sm:col-span-2 lg:col-span-1">
+              <p class="text-sm font-semibold text-[#9DEFB5]">Turnos online</p>
+              <p class="mt-1 text-sm text-[#f0fdfa]">Reserva rapido y recibe confirmacion inmediata.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-[#263138] text-[#ffffff]">
+    <div class="mx-auto grid w-full max-w-6xl gap-8 px-5 py-10 md:grid-cols-3 md:px-8">
+      <div class="space-y-3">
+        <div class="flex items-center gap-2">
+          <img src="assets/img/MirsanLogo.png" alt="Logo Mirsan Lab" class="h-9 w-auto" />
+          <span class="text-2xl font-bold">MirSanLab</span>
+        </div>
+        <p class="max-w-sm text-sm text-[#f0fdfa]">
+          Comprometidos con una atencion humana y resultados precisos para el cuidado de cada paciente.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-lg font-semibold text-[#aaf9c3]">Navegacion</h3>
+        <div class="space-y-2 text-sm">
+          <a href="#inicio" class="block transition hover:text-[#aaf9c3]">Inicio</a>
+          <a href="#servicios" class="block transition hover:text-[#aaf9c3]">Servicios</a>
+          <a href="#galeria" class="block transition hover:text-[#aaf9c3]">Galeria</a>
+          <a href="#ubicacion" class="block transition hover:text-[#aaf9c3]">Ubicacion</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-lg font-semibold text-[#aaf9c3]">Contacto</h3>
+        <div class="space-y-2 text-sm text-[#f0fdfa]">
+          <p>San Juan 335, Quitilipi, Chaco</p>
+          <p>Consultas y seguimiento de resultados en el portal</p>
+        </div>
+        <div class="mt-4 flex gap-3 text-lg">
+          <a href="#" aria-label="Facebook" class="flex h-9 w-9 items-center justify-center rounded-full border border-[#aaf9c3]/40 text-[#f0fdfa] transition hover:border-[#aaf9c3] hover:text-[#aaf9c3]">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" aria-label="Instagram" class="flex h-9 w-9 items-center justify-center rounded-full border border-[#aaf9c3]/40 text-[#f0fdfa] transition hover:border-[#aaf9c3] hover:text-[#aaf9c3]">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" aria-label="WhatsApp" class="flex h-9 w-9 items-center justify-center rounded-full border border-[#aaf9c3]/40 text-[#f0fdfa] transition hover:border-[#aaf9c3] hover:text-[#aaf9c3]">
+            <i class="fab fa-whatsapp"></i>
           </a>
         </div>
       </div>
     </div>
-    <div class="hidden lg:block flex-1 relative">
-      <div
-        class="absolute inset-0 bg-cover bg-center"
-        style="background-image: url('assets/img/analisis-fondo.jpg'); clip-path: polygon(25% 0, 100% 0%, 100% 100%, 0 100%);"
-      >
-        <div class="w-full h-full bg-black bg-opacity-20"></div>
-      </div>
+
+    <div class="border-t border-[#aaf9c3]/20 py-4 text-center text-xs text-[#f0fdfa]">
+      Copyright 2026 MirSanLab. Todos los derechos reservados.
     </div>
-  </section>
-
-  <section id="nosotros" class="container mx-auto px-4 py-14 space-y-14 text-lg">
-    <div class="flex flex-col md:flex-row bg-white rounded-lg overflow-hidden shadow-md">
-      <div
-        class="md:w-2/5 bg-cover bg-center"
-        style="background-image: url('assets/img/servicio-1.jpg')"
-      ></div>
-      <div class="md:w-3/5 p-6 md:p-10">
-        <h3 class="text-3xl font-bold text-[#444747]">Tecnología de Vanguardia</h3>
-        <p class="mt-4 text-[#6b7280] text-justify">
-          Contamos con tecnología de última generación para realizar una amplia variedad de estudios clínicos con resultados precisos.
-        </p>
-      </div>
-    </div>
-
-    <div class="flex flex-col md:flex-row bg-white rounded-lg overflow-hidden shadow-md">
-      <div
-        class="md:w-2/5 bg-cover bg-center"
-        style="background-image: url('assets/img/servicio-2.jpg')"
-      ></div>
-      <div class="md:w-3/5 p-6 md:p-10">
-        <h3 class="text-3xl font-bold text-[#444747]">Atención Personalizada</h3>
-        <p class="mt-4 text-[#6b7280] text-justify">
-          Creemos en brindar una atención única a cada paciente. Resultados listos en 48 horas para una atención rápida y eficaz.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Galería -->
-  <section class="text-[#444747] body-font pb-14 text-lg">
-    <div class="container mx-auto px-2" id="galeria">
-      <div class="flex flex-col text-center w-full mb-16">
-        <h2 class="text-3xl font-bold text-gray-900">Galería de fotos</h2>
-      </div>
-      <div class="container mx-auto p-4">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="grid gap-4">
-            <div data-aos="flip-up">
-              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-1.jpeg" alt="" />
-            </div>
-            <div data-aos="flip-left">
-              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-2.jpeg" alt="" />
-            </div>
-            <div data-aos="zoom-in">
-              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-3.jpeg" alt="" />
-            </div>
-          </div>
-          <div class="grid gap-4">
-            <div data-aos="zoom-out">
-              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-4.jpeg" alt="" />
-            </div>
-            <div data-aos="zoom-out">
-              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-5.jpeg" alt="" />
-            </div>
-            <div data-aos="flip-up">
-              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-6.jpeg" alt="" />
-            </div>
-          </div>
-          <div class="grid gap-4">
-            <div data-aos="flip-up">
-              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-7.jpeg" alt="" />
-            </div>
-            <div data-aos="zoom-out">
-              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-8.jpeg" alt="" />
-            </div>
-          </div>
-          <div class="grid gap-4">
-            <div data-aos="flip-left">
-              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-9.jpeg" alt="" />
-            </div>
-            <div data-aos="flip-up">
-              <img class="h-auto max-w-full rounded-lg" src="assets/img/galeria-10.jpeg" alt="" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Ubicación -->
-  <section id="ubicacion" class="bg-[#aaf9c3]/10 py-14 text-center text-[17px]">
-    <h2 class="text-3xl font-bold text-[#444747] mb-2">Ubicación</h2>
-    <p class="text-[#6b7280] mb-6">San Juan 335, Quitilipi, Chaco, Argentina.</p>
-
-    <div class="w-full max-w-4xl mx-auto aspect-video rounded-lg overflow-hidden shadow-md">
-      <iframe
-        class="w-full h-full"
-        style="border: 0"
-        loading="lazy"
-        allowfullscreen
-        referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3574.663543661198!2d-60.21660082463388!3d-26.865984476662525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94406e2e5b2ef909%3A0x3f5af8f404e85899!2sSan%20Juan%20335%2C%20Quitilipi%2C%20Chaco!5e0!3m2!1ses!2sar!4v1716831086427!5m2!1ses!2sar"
-      ></iframe>
-    </div>
-  </section>
-
-
-  <!-- Footer -->
-<footer class="bg-[#263138] text-white text-[17px]">
-  <div class="max-w-6xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-    
-    <!-- Logo y descripción -->
-    <div class="flex flex-col items-center md:items-start gap-3">
-      <div class="flex items-center gap-2">
-        <img src="assets/img/MirsanLogo.png" class="h-8" alt="Logo Mirsan" />
-        <span class="text-2xl font-bold">Mirsan Lab.</span>
-      </div>
-      <p class="text-sm text-gray-300 text-center md:text-left">
-        Comprometidos con tu salud. Resultados precisos, atención humana.
-      </p>
-    </div>
-
-    <!-- Enlaces -->
-    <div class="flex flex-col items-center gap-2">
-      <h3 class="text-lg font-semibold text-[#aaf9c3]">Navegación</h3>
-      <a href="#nosotros" class="hover:text-[#aaf9c3] transition">Nosotros</a>
-      <a href="#ubicacion" class="hover:text-[#aaf9c3] transition">Ubicación</a>
-    </div>
-
-    <!-- Redes sociales -->
-    <div class="flex flex-col items-center gap-3">
-      <h3 class="text-lg font-semibold text-[#aaf9c3]">Seguinos</h3>
-      <div class="flex gap-4 text-xl">
-        <a href="#" class="hover:text-[#aaf9c3] transition"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="hover:text-[#aaf9c3] transition"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="hover:text-[#aaf9c3] transition"><i class="fab fa-whatsapp"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Línea inferior -->
-  <div class="border-t border-[#aaf9c3]/20 py-4 text-center text-sm text-gray-400">
-    © 2025 Mirsan Lab. Todos los derechos reservados.
-  </div>
-</footer>
-
+  </footer>
 </div>

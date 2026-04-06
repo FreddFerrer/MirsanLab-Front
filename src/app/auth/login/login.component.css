@@ -1,0 +1,36 @@
+:host {
+  display: block;
+}
+
+@keyframes orbDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(2%, 2%, 0) scale(1.05);
+  }
+}
+
+.ambient-orb {
+  animation: orbDrift 16s ease-in-out infinite alternate;
+}
+
+.ambient-orb-delay {
+  animation: orbDrift 18s ease-in-out infinite alternate-reverse;
+}
+
+.login-input {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.login-input:focus {
+  border-color: #8fe0a9;
+  box-shadow: 0 0 0 4px #8fe0a933;
+  background-color: #ffffff;
+}
+
+@media (max-width: 1023px) {
+  .login-input {
+    font-size: 16px;
+  }
+}

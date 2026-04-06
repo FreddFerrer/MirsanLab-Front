@@ -1,15 +1,16 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Resultado } from 'src/app/shared/models/resultado.model';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
+import { environment } from 'src/environment/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ResultadoService {
-  private apiUrl = 'https://mirsanlab.site/api/resultados';
+  private apiUrl = `${environment.apiUrl}/resultados`;
 
   constructor(private http: HttpClient) {}
 
@@ -26,7 +27,7 @@ export class ResultadoService {
   }
 
   abrirResultado(id: number): void {
-    const url = `https://mirsanlab.site/api/resultados/${id}/descargar`;
+    const url = `${this.apiUrl}/${id}/descargar`;
     window.open(url, '_blank');
   }
 
@@ -35,6 +36,22 @@ export class ResultadoService {
   formData.append('pacienteId', pacienteId);
   formData.append('archivo', archivo);
 
-  return this.http.post(`${this.apiUrl}`, formData);
-}
+  return this.postResultado(formData);
+  }
+
+  subirResultadoPorEmail(emailDestino: string, archivo: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('emailDestino', emailDestino);
+    formData.append('archivo', archivo);
+
+    return this.postResultado(formData);
+  }
+
+  private postResultado(formData: FormData): Observable<any> {
+    return this.http.post(this.apiUrl, formData).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return throwError(() => error);
+      })
+    );
+  }
 }

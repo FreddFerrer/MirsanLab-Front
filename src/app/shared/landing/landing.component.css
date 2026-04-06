@@ -1,20 +1,38 @@
-html {
-    scroll-behavior: smooth;
+:host {
+  display: block;
 }
 
-.shadow-text {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+@keyframes floatSoft {
+  0% {
+    transform: translateY(0px);
   }
-
-  .invert-logo {
-    filter: invert(1);
+  50% {
+    transform: translateY(-8px);
   }
-
-body {
-  background: linear-gradient(to right, #7bc2b0, #e5f9f6);
-
+  100% {
+    transform: translateY(0px);
+  }
 }
 
-.bg-radial-gradient {
-  background: radial-gradient(circle, #7bc2b0 0%, #4d433f 10%, transparent 40%);
+@keyframes revealUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.float-soft {
+  animation: floatSoft 6s ease-in-out infinite;
+}
+
+.float-soft-delayed {
+  animation: floatSoft 7s ease-in-out 1.4s infinite;
+}
+
+.reveal-up {
+  animation: revealUp 0.8s ease-out;
 }

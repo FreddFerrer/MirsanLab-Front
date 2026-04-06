@@ -1,4 +1,4 @@
 export interface SubirResultado {
-  pacienteId: string;
+  emailDestino: string;
   archivo: File;
 }

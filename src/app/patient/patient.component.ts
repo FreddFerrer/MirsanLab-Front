@@ -6,7 +6,8 @@ import { TurnoService } from 'src/app/core/services/turno.service';
 
 @Component({
   selector: 'app-patient',
-  templateUrl: './patient.component.html'
+  templateUrl: './patient.component.html',
+  styleUrls: ['./patient.component.css']
 })
 export class PatientComponent implements OnInit {
   nombreUsuario: string = localStorage.getItem('nombre') || '';

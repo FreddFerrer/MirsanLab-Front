@@ -1,27 +1,76 @@
-# MirsanlabFrontend
+# MirsanLab
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+MirsanLab es una plataforma web para digitalizar la gestion de un laboratorio clinico.
+Centraliza turnos, resultados y comunicacion entre pacientes y personal del laboratorio.
 
-## Development server
+## Que problema resuelve
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Muchos laboratorios gestionan turnos y resultados con procesos manuales o canales dispersos.
+Eso genera demoras, errores de carga, poca trazabilidad y una mala experiencia para pacientes y equipo interno.
 
-## Code scaffolding
+MirsanLab resuelve eso con un flujo unificado, simple y seguro.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Las 2 partes del sistema
 
-## Build
+### 1) Frontend (este repositorio)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Aplicacion Angular para la experiencia de usuarios:
 
-## Running unit tests
+- Login y registro.
+- Portal de paciente para consultar resultados y gestionar turnos.
+- Panel administrativo/bioquimico para agenda y carga de resultados.
+- Interfaz responsive para desktop y mobile.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 2) Backend (API)
 
-## Running end-to-end tests
+Servicio REST que concentra la logica de negocio:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Autenticacion y autorizacion por token.
+- Persistencia de usuarios, turnos y resultados.
+- Validaciones del dominio.
+- Envio de resultados por correo electronico.
+- Seguridad y control de acceso por roles.
 
-## Further help
+Nota: este repositorio contiene solo el frontend. El backend se mantiene en su propio proyecto.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Capacidades principales
+
+- Registro e inicio de sesion por rol.
+- Reserva y cancelacion de turnos por parte del paciente.
+- Visualizacion de turnos pendientes en panel admin.
+- Carga de resultados en PDF.
+- Envio de resultados por email.
+- Consulta y descarga de resultados desde el portal.
+
+## Ejecucion local del frontend
+
+### Requisitos
+
+- Node.js 18 o superior
+- npm
+
+### Instalar dependencias
+
+```bash
+npm install
+```
+
+### Levantar en desarrollo
+
+```bash
+npm start
+```
+
+Frontend disponible en: `http://localhost:4200`
+
+### Build
+
+```bash
+npm run build
+```
+
+### Tests
+
+```bash
+npm test
+```

@@ -4,7 +4,8 @@ import { TurnoService, TurnoPendiente } from 'src/app/core/services/turno.servic
 
 @Component({
   selector: 'app-bioquimico',
-  templateUrl: './bioquimico.component.html'
+  templateUrl: './bioquimico.component.html',
+  styleUrls: ['./bioquimico.component.css']
 })
 export class BioquimicoComponent implements OnInit {
   nombreUsuario = localStorage.getItem('nombre') || '';

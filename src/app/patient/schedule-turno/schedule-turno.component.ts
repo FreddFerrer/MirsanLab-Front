@@ -3,7 +3,8 @@ import { TurnoService, TurnoDisponible } from 'src/app/core/services/turno.servi
 
 @Component({
   selector: 'app-schedule-turno',
-  templateUrl: './schedule-turno.component.html'
+  templateUrl: './schedule-turno.component.html',
+  styleUrls: ['./schedule-turno.component.css']
 })
 export class ScheduleTurnoComponent implements OnInit {
   turnos: TurnoDisponible[] = [];
