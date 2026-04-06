@@ -21,7 +21,7 @@ Aplicacion Angular para la experiencia de usuarios:
 - Panel administrativo/bioquimico para agenda y carga de resultados.
 - Interfaz responsive para desktop y mobile.
 
-### 2) Backend (API)
+### 2) Backend (API)  https://github.com/FreddFerrer/MirSanLab-Back.git
 
 Servicio REST que concentra la logica de negocio:
 
